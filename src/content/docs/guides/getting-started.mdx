@@ -1,0 +1,48 @@
+---
+title: Installation
+description: A guide to get started with Strintale
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+You're looking to integrate Stringtale into your (existing) project? You've come to the right place! This guide will lead
+you through the required steps and get you up and running in minutes.
+
+## Integrating Stringtale into your project
+
+Whether you're integrating Stringtale into a new project or an existing one, the steps are the same.
+
+1. Install the Stringtale CLI globally:
+    <Tabs>
+      <TabItem label="npm">
+        ```bash
+        npm install -g @stringtale/cli
+        ```
+      </TabItem>
+      <TabItem label="Yarn">
+        ```bash
+        yarn global add @stringtale/cli
+        ```
+      </TabItem>
+      <TabItem label="pnpm">
+        ```bash
+        pnpm install -g @stringtale/cli
+        ```
+      </TabItem>
+    </Tabs>
+2. Login using with your Stringtale credentials `stringtale login`
+3. Run `stringtale init`, after which the CLI will go through the following steps:
+    1. Offer you to select an existing Stringtale project or offer to create a new one.
+    2. It will return a `STRINGTALE_PROJECT_ID`, to add to your environment variables.
+    3. Automatically add `stringtaleRoute` to your routing to enable it's capabilities in your project.
+    4. Offer you to automatically integrate Stringtale into your project. When accepted this means the CLI will
+    attempt to wrap all static text in your project in `<Value>` tags.
+4. Run your project as you normally would and open it in your browser.
+5. Add the `?stringtale` query parameter to the URL and watch the magic happen.
+
+## Getting live edit to your clients 
+1. Open the [Stringtale Dashboard](https://app.stringtale.com) and select your project.
+2. Go to `Project properties` and create a `API key` for your test / preview environment.
+3. Deploy your updated app to your test/preview environment and add the STRINGTALE_API_KEY environment to your deployment.
+4. Instruct your client to install the [Chrome extension], navigate to the preview environment and click the Stringtale
+button in their toolbar.
