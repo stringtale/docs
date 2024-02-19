@@ -43,7 +43,9 @@ export default defineConfig({
           items: [
             { label: 'CLI', link: '/usage/CLI/' },
             { label: 'Github Action', link: '/usage/github-action/' },
-            { label: 'VS Code Plugin', link: '/usage/vs-code-plugin/' },
+            { label: 'VS Code Extension', link: '/usage/vs-code-extension/' },
+            { label: 'InteliJ / Webstorm Plugin', link: '/usage/intelij-webstorm-plugin/' },
+            { label: 'Vim plugin', link: '/usage/vim-plugin/' },
             { label: 'Browser extension', link: '/usage/browser-extension/' },
           ],
         },
