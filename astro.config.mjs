@@ -5,9 +5,15 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
   integrations: [
     starlight({
-      title: 'My Docs',
+      title: 'Stringtale',
+      // favicon: './src/assets/favicon.ico',
+      // logo: {
+      //   light: './src/assets/logo-light.svg',
+      //   dark: './src/assets/logo-dark.png',
+      //   replacesTitle: false,
+      // },
       social: {
-        github: 'https://github.com/withastro/starlight',
+        github: 'https://github.com/stringtale',
       },
       sidebar: [
         {
@@ -38,6 +44,7 @@ export default defineConfig({
             { label: 'CLI', link: '/usage/CLI/' },
             { label: 'Github Action', link: '/usage/github-action/' },
             { label: 'VS Code Plugin', link: '/usage/vs-code-plugin/' },
+            { label: 'Browser extension', link: '/usage/browser-extension/' },
           ],
         },
         {
