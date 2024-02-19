@@ -1,2 +1,5 @@
 Stringtale
 GitHub
+npm
+[Yy]arn
+pnpm
