@@ -1,0 +1,57 @@
+---
+title: Workflow
+description: A guide to help you get started with Stringtale
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Getting started with new technology can be challenging. The following workflow has proven helpful for people
+to incorporate Stringtale into their workflow.
+
+## For developers
+
+### Initial setup and usage
+
+To get started, you have to integrate Stringtale into your code base and deploy it to your test / preview environment.
+
+1. Use `stringtale init` to integrate Stringtale into a new or existing project.
+2. Create a `API key` in the [Stringtale Dashboard](https://stringtale.com/app/projects).
+3. Deploy your project to your test/preview environment.
+4. Let your client make the changes they require.
+5. Either use `stringtale pull` to pull their changes to your source code or let our [Github action](/usage/github-action) create a pull request
+   on your next commit.
+6. Review the changes and accept them to your code base, ready to be released with the next update.
+
+### Adding new static text to your project
+
+At some during the development of your project you'll have to add new static text to your project. Doing so has been streamlined by using
+the plugin / extension for your editor.
+
+1. Write the static text as you normally would.
+2. Select the text you've just added.
+3. Use the plugin / extension for your editor to wrap the text in a `<Value>` tag with an automatically generated `key` attribute.
+4. The `key` attribute will be used to store updates in the Stringtale's database and retrieve those once the text has changed.
+    <Aside type="caution" title="Changing the key attribute">
+      You can alter a `<Value>`'s `key` attribute if preferred.
+      We however recommend you only change it on initial implementation to
+      avoid synchronization issues.
+    </Aside>
+
+## For clients
+
+For clients we've streamlined the experience by offering them browser extension. This is the user-friendly alternative to appending
+`?stringtale` to the URL.
+
+1. Install the browser extension.
+2. Navigate to the project's test / preview environment.
+3. Click the Stringtale button in the toolbar.
+4. All the field's you've defined as editable with the `<Value>` tag will now become editable and the Stringtale GUI will appear.
+   <Aside type="danger">
+     There's currently no user authentication for text edits in Stringtale. It's therefor recommended to lock down
+     your test / preview environment through other means. For example using basic auth.
+   </Aside>
+5. They make their required changes, saving them as they go.
+   <Aside>
+    Text updates will not be automatically applied to the website once your clients save them.
+    They'll be ready for you to implement at your convenience with the next update.
+   </Aside>
