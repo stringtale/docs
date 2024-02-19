@@ -1,0 +1,29 @@
+---
+title: Introduction
+description: What is Stringtale and why should I use it?
+---
+
+Stringtale is our answer to the decades old struggle of updating static text in your websites.
+The days of copy pasting text from copydocs, emails or tickets to your code are over.
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## What is Stringtale?
+
+Stringtale is a collection of libraries and tools that add live text edit capabilities to your website's test
+or preview environment, without the need of having to develop a CMS. You integrate it with your web framework
+of choice by wrapping your static text in special tags. These tags determine which fields can be edited once
+Strintale is enabled on your website. After a copywriter has saved their changes you, the developer, can pull
+those in locally using the CLI or by letting our Github action create a pull request, which will in turn
+automatically update all static text.
+
+## Why use Stringtale?
+
+By using Stringtale you give your clients what they've always been craving: an easy way to update text on their
+website. Even better still, you can so by barely even lifting a finger. There's no need to build a CMS to manage
+each and every single piece of text on your website, Stringtale can do this for you. Not by giving you a CMS, but
+rather by adding live edit capabilities to your website. Clients can edit text exactly where it appears.
+
+Once your client has made the edits they want, you can automatically pull those changes to your source code
+using our CLI or you can let our Github action create a pull request for them the next time you commit. By doing
+so you as the developer still have control over integrating those text changes into your project.
