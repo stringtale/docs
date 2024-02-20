@@ -45,13 +45,14 @@ export default defineConfig({
         },
         {
           label: 'Usage',
-          items: [
-            { label: 'Github Action', link: '/usage/github-action/' },
-            { label: 'VS Code Extension', link: '/usage/vs-code-extension/' },
-            { label: 'InteliJ / Webstorm Plugin', link: '/usage/intelij-webstorm-plugin/' },
-            { label: 'Vim plugin', link: '/usage/vim-plugin/' },
-            { label: 'Browser extension', link: '/usage/browser-extension/' },
-          ],
+          autogenerate: { directory: 'usage' },
+          // items: [
+          //   { label: 'Github Action', link: '/usage/github-action/' },
+          //   { label: 'VS Code Extension', link: '/usage/vs-code-extension/' },
+          //   { label: 'InteliJ / Webstorm Plugin', link: '/usage/intelij-webstorm-plugin/' },
+          //   { label: 'Vim plugin', link: '/usage/vim-plugin/' },
+          //   { label: 'Browser extension', link: '/usage/browser-extension/' },
+          // ],
         },
         {
           label: 'Reference',
