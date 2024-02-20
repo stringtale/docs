@@ -3,4 +3,49 @@ title: CLI
 description: An overview of all CLI commands
 ---
 
-A reference guide for all CLI options.
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+A reference guide for all CLI options. Note that all sub commands can be ran with the `--help` option to display more information about the command.
+
+## Installation
+
+You can install the CLI using your JavaScript package manager.
+
+<Tabs>
+  <TabItem label="npm">```bash npm install -g @stringtale/cli ```</TabItem>
+  <TabItem label="Yarn">```bash yarn global add @stringtale/cli ```</TabItem>
+  <TabItem label="pnpm">```bash pnpm install -g @stringtale/cli ```</TabItem>
+</Tabs>
+
+## Base command
+
+You can use the Stringtale CLI as follows.
+
+```bash
+stringtale [sub command] [options]
+```
+
+## Sub commands
+
+### `login`
+
+Authenticates the Stringtale CLI with the dashboard (https://stringtale.com/app/projects). The CLI stores your session token in
+`~/.config/stringtale/token.json`.
+
+### `init`
+
+Automatically integrates Stringtale into a new or existing project. It wil offer to select an existing project in Stringtale or create a new one.
+After selecting which framework you use it will take the required steps to integrate Stringtale within your project.
+
+### `pull`
+
+Pull in text edits from Stringtale to your local source code. You can use this if your code isn't hosted by GitHub or you don't want to use
+the GitHub action.
+
+### `help` / `--help`
+
+Displays information about the various commands. You can run each sub command with the `--help` option for more information about it's use.
+
+### `logout`
+
+Signs out Stringtale and deletes your local token from `~/.config/stringtale/token.json`.
