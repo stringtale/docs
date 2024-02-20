@@ -1,3 +1,8 @@
+.site-title {
+  font-family: 'Changa One', sans-serif;
+  font-size: 32px;
+}
+
 main {
   h1, h2 {
     font-family: 'Changa One', sans-serif;
