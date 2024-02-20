@@ -1,0 +1,29 @@
+---
+title: FAQ
+description: Frequently Asked Questions (FAQ)
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+## When are text edits applied?
+
+Text edits get applied when you pull the changes to your local source code or merge a pull request from the GitHub action. They'll then be
+available at your test / preview environment upon your next release.
+
+## Can I use rich-text formatting with Stringtale?
+
+Yes, there are various formatting options available. Check the documentation for your framework on how to achieve this.
+
+## Can I use string interpolation with Stringtale?
+
+Yes, Stringtale is compatible with string interpolation. String interpolation uses the `Intl.Messageformat` notation.
+You can find more about how to use this in the documentation of your framework.
+
+## Why should I use on my test / preview environment rather than production?
+
+The Stringtale integration handles authentication through an API key on the server. There is no authentication for individual users editing text
+at this moment. This means that anyone with access to the website (on your test / preview environment) can edit the text. It's therefor recommended
+that you use a secured test / preview environment to avoid unauthorized usage. On production the `STRINGTALE_API_KEY` environment variable
+isn't present and the the integration will be disabled.
+
+<Aside type="tip">You can secure your test / preview environment using basic auth.</Aside>
