@@ -3,3 +3,60 @@ title: GitHub action
 description: A guide on how to use the GitHub action.
 ---
 
+Learn how to use the Stringtale GitHub Action in your workflow.
+
+## What does it do?
+
+The Stringtale GitHub Action automatically creates Pull Requests in your GitHub repository with the latest text updates stored in Stringtale.
+
+## Why use it?
+The GitHub action automates the process of implementing text changes that have made by you or your client. Your team will gets notified automatically
+of new Pull Requests, allowing you to see if there is an update without having to check manually.
+
+With our GitHub action you still have full control if you want to run Stringtale on every push on every branch, or if you want to limit this
+to just release branches.
+
+## How do I use it?
+
+### Setting up the GitHub action
+You can set up the GitHub action for your repository in a couple of steps.
+
+1. Navigate to the [Stringtale Dashboard](https://stringtale.com/app/projects) and open your project.
+2. Go to `Project Settings` and create a new `Deploy token`. Copy this, as you'll need it in a moment.
+3. Next, go to your GitHub repository => Settings => Environments.
+4. Add the `Deploy token` as `STRINGTALE_TOKEN` to the required environment(s).
+5. Create a `stringtale.yaml` file in the `.github` folder in the root of your project. For example
+`<PROJECT_DIRECTORY>/.github/stringtale.yaml`.
+6. Use the example YAML file from below and adjust to your project's needs.
+7. The next time this workflow gets triggered Stringtale will automatically create a Pull Request with any pending changes to the branch that triggered it.
+
+### Example yaml for GitHub actions
+
+The example yaml file below will enable Stringtale to run on all branches on all pushes. If you prefer a different workflow, please refer
+to the [GitHub Actions documentation](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
+
+```yaml
+name: Stringtale
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    environment: CHANGE-ME # Change this to your GitHub environment
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Run stringtale action
+      uses: demonsters/stringtale-action@v0.2.14
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # STRINGTALE_TOKEN is the Deploy Token for your project in the dashboard
+        STRINGTALE_TOKEN: ${{ secrets.STRINGTALE_TOKEN }}
+
+```
