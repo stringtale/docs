@@ -27,23 +27,20 @@ export default defineConfig({
         },
         {
           label: 'Getting started',
-          items: [
-            { label: 'Installation', link: '/guides/getting-started/' },
-            { label: 'Workflow', link: '/guides/workflow/' },
-          ],
+          autogenerate: { directory: 'guides' },
         },
         {
           label: 'Frameworks',
-          items: [
-            { label: 'React', link: '/frameworks/react/' },
-            { label: 'Next.js', link: '/frameworks/next-js/' },
-            { label: 'Express.js', link: '/frameworks/express-js/' },
-          ],
+          // items: [
+          //   { label: 'React', link: '/frameworks/react/' },
+          //   { label: 'Next.js', link: '/frameworks/next-js/' },
+          //   { label: 'Express.js', link: '/frameworks/express-js/' },
+          // ],
+          autogenerate: { directory: 'frameworks' },
         },
         {
           label: 'Usage',
           items: [
-            { label: 'CLI', link: '/usage/CLI/' },
             { label: 'Github Action', link: '/usage/github-action/' },
             { label: 'VS Code Extension', link: '/usage/vs-code-extension/' },
             { label: 'InteliJ / Webstorm Plugin', link: '/usage/intelij-webstorm-plugin/' },
