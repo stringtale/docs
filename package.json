@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.5.4",
     "@astrojs/starlight": "^0.19.0",
+    "@fontsource/changa-one": "^5.0.18",
     "astro": "^4.3.4",
     "sharp": "^0.32.5",
     "starlight-links-validator": "^0.5.3",

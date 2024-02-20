@@ -14,6 +14,11 @@ export default defineConfig({
       //   dark: './src/assets/logo-dark.png',
       //   replacesTitle: false,
       // },
+      customCss: [
+        './src/styles/custom.css',
+        '@fontsource/changa-one/400.css',
+        
+      ],
       social: {
         github: 'https://github.com/stringtale',
       },
