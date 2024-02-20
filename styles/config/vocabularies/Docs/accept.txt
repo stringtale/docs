@@ -2,6 +2,7 @@ Stringtale
 GitHub
 npm
 [Yy]arn
+JavaScript
 pnpm
 De Monsters
 Next.js
