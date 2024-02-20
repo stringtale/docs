@@ -17,6 +17,7 @@ export default defineConfig({
       customCss: [
         './src/styles/custom.css',
         '@fontsource/changa-one/400.css',
+        '@fontsource/changa/400.css',
         
       ],
       social: {
