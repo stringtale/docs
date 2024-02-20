@@ -20,20 +20,20 @@ To get started, you have to integrate Stringtale into your code base and deploy 
 4. Let your client make the changes they require.
 5. Either use `stringtale pull` to pull their changes to your source code or let our [GitHub action](/usage/github-action) create a pull request
    on your next commit.
-6. Review the changes and accept them to your code base, ready to be released with the next update.
+6. Review the changes and accept them to your code base, ready for release with the next update.
 
 ### Adding new static text to your project
 
-At some during the development of your project you'll have to add new static text to your project. Doing so has been streamlined by using
+At some during the development of your project you'll have to add new static text to your project. The easiest way to achieve this is by using
 the plugin / extension for your editor.
 
-1. Write the static text as you normally would.
+1. Create your component with the static text.
 2. Select the text you've just added.
 3. Use the plugin / extension for your editor to wrap the text in a `<Value>` tag with an automatically generated `key` attribute.
-4. The `key` attribute will be used to store updates in the Stringtale's database and retrieve those once the text has changed.
+4. The `key` attribute will gets used to store updates in the Stringtale's database and retrieve those once the text has changed.
     <Aside type="caution" title="Changing the key attribute">
       You can alter a `<Value>`'s `key` attribute if preferred.
-      We however recommend you only change it on initial implementation to
+      We recommend you only change it on initial implementation to
       avoid synchronization issues.
     </Aside>
 
@@ -51,5 +51,5 @@ For clients we've streamlined the experience by offering them browser extension.
 5. Your client makes their required changes, saving them as they go. Ready for your to deploy with the next update.
 <Aside type="tip">
    It's highly recommended you lock down your test / preview environment through some form authentication (i.e. basic auth),
-   as there's currently no user authentication for text edits in Stringtale.
+   as there's no user authentication for text edits in Stringtale at this moment.
 </Aside>
