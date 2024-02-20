@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import starlightLinksValidator from 'starlight-links-validator'
 import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
@@ -6,6 +7,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Stringtale',
+      plugins: [starlightLinksValidator()],
       // favicon: './src/assets/favicon.ico',
       // logo: {
       //   light: './src/assets/logo-light.svg',
