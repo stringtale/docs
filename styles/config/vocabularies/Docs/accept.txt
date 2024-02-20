@@ -4,3 +4,6 @@ npm
 [Yy]arn
 pnpm
 De Monsters
+Next.js
+Express.js
+React
