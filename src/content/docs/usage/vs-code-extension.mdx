@@ -1,0 +1,34 @@
+---
+title: Visual Studio Code extension
+description: A guide on how to install and use the Visual Studio Code Extension.
+---
+
+Learn how to use the Visual Studio Code Extension.
+
+## What does it do?
+
+The Visual Studio Code Extension allows you to wrap your static text with `<Value>` tags automatically along with generating unique `name` attributes.
+
+## How do I use it?
+
+1. Install the Stringtale [Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=Stringtale.stringtale) from
+the Visual Studio Marketplace
+2. Select the text you want to wrap in a `<Value>` tag
+
+![Selected text in VS Code](../../../assets/images/vscode-extension/step-2.png)
+
+3. Hit `Ctrl/Cmd + Shift + P` and exexcute `String tale: Wrap`
+
+![VS Code Command Palette with Stringtale: Wrap selected](../../../assets/images/vscode-extension/step-3.png)
+
+4. The VS Code extension will generate a unique `name` attribute for the `<Value>` tag based on the filepath and offer
+you to rename it. We recommend you limit renaming to new tags and not existing ones to avoid synchronization issues.
+
+![Stringtale offering to rename the name attribute for the Value tag](../../../assets/images/vscode-extension/step-4.png)
+
+5. Once you've accepted the name, the VS Code wrap your text in a `<Value>` tag, rendering the field editable in your browser.
+
+![Stringtale has wrapped the static text with a Value tag](../../../assets/images/vscode-extension/step-5.png)
+
+6. That's it! The name attribute will be used to store information once the text changes, there's no need to push
+it to the server.
