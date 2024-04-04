@@ -5,12 +5,38 @@ description: A guide to get started with Stringtale
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-You're looking to integrate Stringtale into your (existing) project? You've come to the right place! This guide will lead
+Looking to integrate Stringtale into your (existing) project? You've come to the right place! This guide will lead
 you through the required steps and get you up and running in minutes.
 
-## Integrating Stringtale into your project
+## Before getting started
 
-Whether you're integrating Stringtale into a new project or an existing one, the steps are the same.
+### Introduction of components
+Understanding the different components of Stringtale up front will aid your integration. Here's a run down of the
+components.
+
+
+- JavaScript libraries (for integration with the front- and back-end of your project)
+- Command Line Utility (CLI) (for easier integration and local usage)
+- Dashboard (for creating and managing projects, users as well as billing)
+- GitHub action (optional)
+
+### How does it work once integrated?
+
+Stringtale works as a client side JavaScript library that activates either by either adding `?stringtale` to the URL
+or by enabling it through the [Chrome extension](/usage/browser-extension). When edited text gets saved, it makes
+a call to the `/api/stringtale` route of your back-end, which then passes it on to Stringtale for storage. Your back-end
+will then in turn call the Strintale API, authenticating using the `Deploy key`.
+
+## Integrating Stringtale
+
+Due to how Stringtale operates, it's required to integrate it with both the backend and the frontend of your project. We're
+working on a new version where the backend is no longer required, but at this point in time that's not available.
+
+### Integrating Stringtale on your back-end
+
+The fastest way to get started is to use our CLI for semi-automatic integration. If you prefer to do things manually,
+please refer to our documentation for your back-end framework. Both automatic as well as manual integration work for
+new and existing projects. To use the CLI, follow the steps below.
 
 1. Install the **Stringtale CLI** globally:
    <Tabs>
@@ -31,14 +57,51 @@ Whether you're integrating Stringtale into a new project or an existing one, the
       </TabItem>
    </Tabs>
 2. Login using with your Stringtale credentials `stringtale login`
-3. Run `stringtale init`, after which the CLI will go through the following steps:
-   1. Offer you to select an existing Stringtale project or offer to create a new one.
-   2. It will return a `STRINGTALE_PROJECT_ID`, to add to your environment variables.
-   3. Automatically add `stringtaleRoute` to your routing to enable it's capabilities in your project.
-   4. Offer you to automatically integrate Stringtale into your project. When accepted this means the CLI will
-      attempt to wrap all static text in your project in `<Value>` tags.
+3. Run `stringtale init`, and follow the prompts
+   1. Select your language (Typescript or JavaScript)
+   2. Select which back-end framework you use (Next.js or Express.js)
+   3. Offer you to select an existing Stringtale project or offer to create a new one.
+   4. Depending on your selected framework it will exexcute the following steps:
+
+      **Next.js (both app and pages router)**
+      
+      1. Attempt to locate your next.config.js to detect the root of your project or
+         prompt you if it can't find the correct one.
+      2. Detect whether you use the App router or the pages router.
+      3. Create a `stringtale.ts` file in the appropriate API folder to enable `/api/stringtale`.
+      4. Add the required dependencies for your project.
+      5. Write a `stringtale.config.json` to the root of your project with the configuration for the CLI.
+
+      **Express.js**
+      1. Add the required dependencies for your project.
+      2. Write a `stringtale.config.json` to the root of your project with the configuration for the CLI.
+      3. Instuct you to add the `/api/stringtale` route. Because of how Express handles routing, we don't add this automatically.
+         ```tsx
+          import express from 'express'
+          import { setupRoute } from "@stringtale/express"
+          const app = express()
+
+          app.all('/api/stringtale', setupRoute({
+            apiKey: process.env.STRINGTALE_API_KEY!
+          }))
+         ```
+  5. Once `stringtale init` has finished, it's integrated with your back-end. Refer to the [React framework]() documentation to implement it with your front-end.
+
+### Integrating Stringtale on your front-end
+
+In order to integrate Stringtale in your React front-end
+
+
+   
+CODE GEN
+4. Offer you to automatically integrate Stringtale into your project. When accepted this means the CLI will
+  attempt to wrap all static text in your project in `<Value>` tags.
 4. Run your project and open it in your browser.
 5. Add the `?stringtale` query parameter to the URL and watch the magic happen.
+
+{/* 
+
+## Using Stringtale
 
 ## Getting live edit to your clients
 
@@ -46,4 +109,4 @@ Whether you're integrating Stringtale into a new project or an existing one, the
 2. Go to `Project properties` and create an `API key` for your test / preview environment.
 3. Deploy your updated app to your test/preview environment and add the STRINGTALE_API_KEY environment to your deployment.
 4. Instruct your client to install the [Chrome extension], navigate to the preview environment and click the Stringtale
-   button in their toolbar.
+   button in their toolbar. */}
