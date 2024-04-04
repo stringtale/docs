@@ -36,13 +36,22 @@ export default defineConfig({
           autogenerate: { directory: 'guides' },
         },
         {
-          label: 'Frameworks',
+          label: 'Back-end frameworks',
           // items: [
           //   { label: 'React', link: '/frameworks/react/' },
           //   { label: 'Next.js', link: '/frameworks/next-js/' },
           //   { label: 'Express.js', link: '/frameworks/express-js/' },
           // ],
-          autogenerate: { directory: 'frameworks' },
+          autogenerate: { directory: 'back-end' },
+        },
+        {
+          label: 'Front-end frameworks',
+          // items: [
+          //   { label: 'React', link: '/frameworks/react/' },
+          //   { label: 'Next.js', link: '/frameworks/next-js/' },
+          //   { label: 'Express.js', link: '/frameworks/express-js/' },
+          // ],
+          autogenerate: { directory: 'front-end' },
         },
         {
           label: 'Usage',

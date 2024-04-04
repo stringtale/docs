@@ -1,0 +1,118 @@
+---
+title: Next.js - App router
+description: Implementation guide for using Stringtale with Next.js when using the app router
+---
+{/* 
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+## Implementation
+
+The implementation in Next.js differs slightly between the App router and the pages router.
+
+### App router
+
+Unknown
+
+### Pages router (legacy)
+
+In order to use Stringtale in your Next.js application with the pages router you can either use [`stringtale init`](/reference/cli#init) from our CLI or
+execute the following steps manually.
+
+1. Install the `@stringtale/next` package in your project using your package manager.
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+         npm install @stringtale/next
+       ```
+     </TabItem>
+     <TabItem label="Yarn">
+       ```bash
+         # If you're using a monorepo with workspaces, add it to the right workspace
+         yarn add @stringtale/next
+       ```
+      </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+         pnpm install @stringtale/next
+       ```
+      </TabItem>
+   </Tabs>
+2. Create a new file `<PROJECT_DIRECTORY>/pages/api/stringtale.ts` and add the following content:
+    ```ts
+      import { setupRoute } from '@stringtale/next'
+
+      export default setupRoute({
+        apiKey: process.env.STRINGTALE_API_KEY!,
+      })
+    ```
+3. Add the `STRINGTALE_API_KEY` to your `.env` file. The value of this should be set to XXX.
+
+## Basic usage
+
+In it's most basic form Stringtale can be used anywhere you have static text that you want your clients to be able to edit.
+Here's an example of how you can use Stringtale to change the text of a button.
+
+```tsx
+import { Value } from "@stringtale/next";
+
+<button>
+  <Value name="apps.web.src.index.header.try_now">
+    Try now
+  </Value>
+</button>
+```
+
+### String interpolation
+
+```tsx
+import { Value } from "@stringtale/next";
+
+const groceries = ["Bananas", "Pineapple", "Kiwi"]
+
+<span>
+  <Value
+    name="apps.web.src.groceries.items"
+    format={{
+      count: groceries.length
+    }}
+  >
+    {`Your grocery list contains {count} items`}
+  </Value>
+</span>
+```
+
+### Text formatting
+
+
+```tsx
+import { Value } from "@stringtale/next";
+
+<Value
+  name="apps.web.src.counter.items"
+  format={{
+    b: (c) => <Text bold>{c}</Text>,
+  }}
+>
+  {`<b>Alle methodes:</b> {count} items`}
+</Value>
+```
+
+### String interpolation and text formatting
+```tsx
+import { Value } from "@stringtale/next";
+<Value
+  name="apps.web.src.counter.items"
+  format={{
+    b: (c) => <Text bold>{c}</Text>,
+    count: hits?.[0]?.length
+  }}
+>
+  {`<b>Alle methodes:</b> {count} items`}
+</Value>
+```
+Supported tags:
+
+## Advanced usage
+
+Server strings
+ */}
