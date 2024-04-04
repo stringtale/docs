@@ -1,0 +1,96 @@
+---
+title: React
+description: Explanation on how to integrate Stringtale in your front-end using React
+---
+
+## React
+
+Stringtale is fully compatible with React as long as you're using a back-end server to handle the communication with Stringtale.
+Currently we support NextJS (both the App router and the legacy pages router) as well as Express.js as back-ends, with more coming
+in the future.
+
+## Implementation
+
+The implementation of Stringtale in React is very flexible. You're not limited to just using plain text. It also supports string
+interpolation, rich text as well as custom 
+
+### Basic usage
+
+In its most basic form Stringtale can be used anywhere you have static text that you want your clients to be able to edit.
+Here's an example of how you can use Stringtale to change the text of a button.
+
+```tsx
+import { Value } from "@stringtale/react";
+
+<button>
+  <Value name="apps.web.src.index.header.try_now">
+    Try now
+  </Value>
+</button>
+```
+
+### String interpolation
+
+```tsx
+import { Value } from "@stringtale/react";
+
+const groceries = ["Bananas", "Pineapple", "Kiwi"]
+
+<span>
+  <Value
+    name="apps.web.src.groceries.items"
+    format={{
+      count: groceries.length
+    }}
+  >
+    {`Your grocery list contains {count} items`}
+  </Value>
+</span>
+```
+
+### Text formatting
+
+
+```tsx
+import { Value } from "@stringtale/react";
+
+<Value
+  name="apps.web.src.counter.items"
+  format={{
+    b: (c) => <Text bold>{c}</Text>,
+    b2: (c) => <RedText bold>{c}</RedText>
+  }}
+>
+  {`<b>Alle methodes:</b> {count} <b2>items</b2>`}
+</Value>
+```
+
+### String interpolation and text formatting
+```tsx
+import { Value } from "@stringtale/react";
+<Value
+  name="apps.web.src.counter.items"
+  format={{
+    b: (c) => <Text bold>{c}</Text>,
+    count: hits?.[0]?.length
+  }}
+>
+  {`<b>Alle methodes:</b> {count} items`}
+</Value>
+```
+Supported tags:
+
+
+By default HTML tags are supported by importing them, if you want to use custom formatting, this can be done through
+```tsx
+
+import { tags, Value } from "@stringtale/react"
+
+<Value format={{ ...tags, yourTag: (c) => <SomeTag>{c}</SomeTag> }}>{`<b>Bold test</b> <yourTag>asdfasdf</yourTag>`}</Value>
+
+```
+
+## Advanced usage
+
+Server strings
+
