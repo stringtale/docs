@@ -1,0 +1,56 @@
+---
+title: ESlint plugin
+description: ESlint
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+## Introduction
+
+In order to aid you in the (consistent) usage of Stringtale in your project, we've developed an ESlint plugin.
+This plugin will automatically highlight lines of your code where you are using plain text without the use of
+Stringtale and offer to wrap your text in `<Value>` tags. It can also throw errors when building your code.
+
+## Implementation
+
+1. Install the `@stringtale/eslint-plugin` as a dev package in your project.
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+         npm install --dev @stringtale/eslint-plugin
+       ```
+     </TabItem>
+     <TabItem label="Yarn">
+       ```bash
+         # If you're using a monorepo with workspaces, add it to the right workspace
+         yarn add --dev @stringtale/eslint-plugin
+       ```
+      </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+         pnpm install --dev @stringtale/eslint-plugin
+       ```
+      </TabItem>
+   </Tabs>
+
+2. Add the following ESlint rules to your eslint configuration. Depending on your project, the exact location
+will differ, usually it's either in `.eslintrc.js` or `eslint.config.js`.
+
+    ```js
+      module.exports = {
+        rules: {
+          "@stringtale/no-unwrapped-jsx-text": "error",
+          "@stringtale/no-string-jsx-attributes": "warn",
+          "@stringtale/no-dynamic-value-name-attribute": "error",
+          "@stringtale/no-dynamic-value-children": "error",
+        },
+        plugins: ["@stringtale"]
+      }  
+    ```
+
+    For more information on how to
+    configure eslint, check the [configuration documentation](https://eslint.org/docs/latest/use/configure/) as well as
+    the [configuration files documentation](https://eslint.org/docs/latest/use/configure/configuration-files).
+3. Your editor should now warn you whenever you attempt to add new text to your project without using Stringtale.
+
+
