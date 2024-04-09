@@ -5,7 +5,7 @@ description: Implementation guide for using Stringtale with Next.js when using t
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 
-## Pages router back-end
+## Pages router
 
 In order for Stringtale to work, a back-end server is required. The back-end handles the communication between your website and Stringtale. For
 Next.js we support both the App router and the (legacy) Pages router. If you use the App router, please check the [App router documentation](/backend/next-js-app-router) instead.
@@ -43,7 +43,10 @@ execute the following steps manually.
         apiKey: process.env.STRINGTALE_API_KEY!,
       })
     ```
-3. Add STRINGTALE_API_KEY to your `.env.local` file. The value of this should be set to XXX.
+3. Add `STRINGTALE_API_KEY` to your `.env.local` file. The value of this should be set to XXX.
+    ```
+      STRINGTALE_API_KEY=YOUR_API_KEY
+    ```
 4. Update your `App` component in `<PROJECT_DIRECTORY>/pages/_app.tsx` and wrap your app using `<StringtaleProvider>` as follows:
 
       ```tsx
