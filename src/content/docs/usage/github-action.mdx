@@ -41,11 +41,11 @@ name: Stringtale
 on:
   push:
     branches:
-      - '**'
+      - '**' # Where ** Mean all branches, * only matches every branch that doesn't contain a '/'
 
 jobs:
   build-web:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Or i.e. ubuntu-20.04, no version requirement there
     environment: CHANGE-ME # Change this to your GitHub environment
     
     steps:
