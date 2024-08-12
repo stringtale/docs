@@ -12,7 +12,10 @@ in the future.
 ## Implementation
 
 The implementation of Stringtale in React is very flexible. You're not limited to just using plain text. It also supports string
-interpolation, rich text as well as custom 
+interpolation, formatting as well as custom components.
+
+For all usages Stringtale uses FormatJS under the hood. So if you're unsure about how to use it, please check out
+the [FormatJS documentation](https://formatjs.io/docs/core-concepts/icu-syntax/).
 
 ### Basic usage
 
@@ -29,7 +32,17 @@ import { Value } from "@stringtale/react";
 </button>
 ```
 
+**The resulting output would be:**
+
+---
+
+[Try now]
+
+---
+
 ### String interpolation
+
+Stringtale isn't limited to plain text. It also supports string interpolation.
 
 ```tsx
 import { Value } from "@stringtale/react";
@@ -43,53 +56,102 @@ const groceries = ["Bananas", "Pineapple", "Kiwi"]
       count: groceries.length
     }}
   >
-    {`Your grocery list contains {count} items`}
+    {`Your grocery list contains {count} items.`}
   </Value>
 </span>
 ```
 
-### Text formatting
+**The resulting output would be:**
 
+---
+
+Your grocery list contains 3 items.
+
+---
+
+### Using inline components
+
+It's also possible to use inline components in your strings. This can be useful when you want to use your own React components or links inside your strings.
+
+```tsx
+import { Value } from "@stringtale/react";
+import Link from "next/link"
+
+<Value
+  name="apps.web.src.storebanner.description"
+  format={{
+    bold: (c) => <Text bold>{c}</Text>,
+    link: (c) => <Link href={Routes.StorePage()}>{c}</Link>
+  }}
+>
+  {`For our <b>merchandise</b> check out the <link>store</link>.`}
+</Value>
+```
+
+**The resulting output would be:**
+
+---
+
+For our **merchandise** check out the <ins>store</ins>.
+
+---
+
+
+### String interpolation and text formatting combined
+
+String interlopation and text formatting combined can be used to create more complex strings.
 
 ```tsx
 import { Value } from "@stringtale/react";
 
+const hits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 <Value
   name="apps.web.src.counter.items"
   format={{
-    b: (c) => <Text bold>{c}</Text>,
-    b2: (c) => <RedText bold>{c}</RedText>
+    bold: (c) => <Text bold>{c}</Text>,
+    count: hits.length
   }}
 >
-  {`<b>Alle methodes:</b> {count} <b2>items</b2>`}
+  {`Result: <bold>{count} items</bold>.`}
 </Value>
 ```
 
-### String interpolation and text formatting
+---
+
+Result **9 items**.
+
+---
+
+
+
+### Using standard HTML tags
+
+To simplify the formatting of your strings, we've included an easy way to import standard HTML tags for you to use. They're usage is slightly
+different depending on wether it's a self closing tag such as `<br>` or not such as `<b></b>`.
+
 ```tsx
 import { Value } from "@stringtale/react";
 <Value
   name="apps.web.src.counter.items"
   format={{
-    b: (c) => <Text bold>{c}</Text>,
-    count: hits?.[0]?.length
+    ...htmlEmptyTags,
+    ...htmlFormatTags,
   }}
 >
-  {`<b>Alle methodes:</b> {count} items`}
+  {`This is a sentence with <b>bold</b>, <i>italic</i> and <u>underlined</u>
+  text.It also has a linebreak{br}in the middle.`}
 </Value>
 ```
-Supported tags:
 
+**The resulting output would be:**
 
-By default HTML tags are supported by importing them, if you want to use custom formatting, this can be done through
-```tsx
+---
 
-import { tags, Value } from "@stringtale/react"
+This is a sentence with **bold**, *italic* and <ins>underlined</ins> text. It also has a linebreak\
+in the middle.
 
-<Value format={{ ...tags, yourTag: (c) => <SomeTag>{c}</SomeTag> }}>{`<b>Bold test</b> <yourTag>asdfasdf</yourTag>`}</Value>
-```
+---
 
 ## Advanced usage
 
-Server strings
-
+### Server strings
