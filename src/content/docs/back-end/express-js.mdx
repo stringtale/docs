@@ -3,3 +3,60 @@ title: Express.js
 description: Implementation guide for using Stringtale with Express.js
 ---
 
+import { Tabs, TabItem } from "@astrojs/starlight/components"
+
+In order for Stringtale to work, a back-end server is required. One of our supported options is Express.js. In this guide we'll go over
+the manual implementation of Stringtale using Express.js.
+
+## Manual implementation
+
+To use Stringtale in your Express.JS application with the app router you can either use [`stringtale init`](/reference/cli#init) from our CLI or
+execute the following steps manually.
+
+1. Install the `@stringtale/express` and `@stringtale/react` package in your project using your package manager.
+   <Tabs>
+     <TabItem label="npm">
+       ```bash
+         npm install @stringtale/express @stringtale/react
+       ```
+     </TabItem>
+     <TabItem label="Yarn">
+       ```bash
+         # If you're using a monorepo with workspaces, add it to the right workspace
+         yarn add @stringtale/express @stringtale/react
+       ```
+      </TabItem>
+     <TabItem label="pnpm">
+       ```bash
+         pnpm install @stringtale/express @stringtale/react
+       ```
+      </TabItem>
+   </Tabs>
+
+2. Add the `/api/stringatale` route to your routes file in Express.JS. Example:
+
+    ```tsx
+    import express from 'express'
+    import { setupRoute } from "@stringtale/express"
+    const app = express()
+    
+    app.all('/api/stringtale', setupRoute({
+      apiKey: process.env.STRINGTALE_API_KEY!
+    }))
+    ```
+3. Modfiy the `app.js` / `app.tsx` of your React application to provide the Stringtale Context to your application.
+    ```tsx
+    import { StringtaleProvider } from "@stringtale/react"
+    import "@stringtale/react/styles.css"
+
+    function App() {
+      return (
+        <StringtaleProvider apiRoute="https://www.example.com/api/stringtale">
+          <div className="App" />
+        </StringtaleProvider>
+      )
+    }
+
+    export default App
+    ```
+    For more information about Contexts and Context Providers see this [React blogpost](https://react.dev/learn/passing-data-deeply-with-context) and the [React documentation](https://react.dev/reference/react/createContext).
