@@ -23,7 +23,7 @@ the Visual Studio Marketplace
 
 <Image src={step2} alt="Selected text in VS Code"  />
 
-3. Hit `Ctrl/Cmd + Shift + P` and exexcute `String tale: Wrap`
+3. Hit `Ctrl/Cmd + Shift + P` and exexcute `Stringtale: Wrap`
 
 <Image src={step3} alt="VS Code Command Palette with Stringtale: Wrap selected"  />
 
@@ -38,3 +38,36 @@ you to rename it. We recommend you limit renaming to new tags and not existing o
 
 6. That's it! The name attribute will be used to store information once the text changes, there's no need to push
 it to the server.
+
+## Automatic wrapping of string iterpolated variables
+
+The Visual Studio Code extension isn't limited to just static text. It supports automatically wrapping variables and placing them in
+the format attribute of the `<Value>` tag.
+
+So when you select the text and execute the `Stringtale: Wrap` command, the VS Code extension will automatically and populate the format attribute.
+```tsx
+import { Value } from "@stringtale/react";
+
+const name = "John Doe"
+
+<span>
+  Welcome: {name}
+</span>
+```
+
+Will automatically be transformed to
+
+```tsx
+import { Value } from "@stringtale/react";
+
+const name = "John Doe"
+
+<span>
+  <Value
+    name="apps.web.src.index.welcome_name"
+    format={{ name }}
+  >
+    {`Welcome: {name} `}
+  </Value>
+</span>
+```
