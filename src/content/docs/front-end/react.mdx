@@ -130,7 +130,8 @@ To simplify the formatting of your strings, we've included an easy way to import
 different depending on wether it's a self closing tag such as `<br>` or not such as `<b></b>`.
 
 ```tsx
-import { Value } from "@stringtale/react";
+import { Value, htmlEmptyTags, htmlFormatTags } from "@stringtale/react";
+
 <Value
   name="apps.web.src.counter.items"
   format={{
