@@ -569,15 +569,15 @@
   dependencies:
     "@expressive-code/core" "^0.35.6"
 
-"@fontsource/changa-one@^5.0.18":
-  version "5.0.18"
-  resolved "https://registry.yarnpkg.com/@fontsource/changa-one/-/changa-one-5.0.18.tgz#ccb62694d1875507eb848658880279ed781fda7f"
-  integrity sha512-JR5PIY6+h+jNIeYxKkD/R3bo0RF6wJWfErF5WjYqe49Nr+7adQvbRjtHx1j1r/iPUFa9otS4eLQKGmYnrsD99g==
+"@fontsource/changa-one@^5.0.19":
+  version "5.0.19"
+  resolved "https://registry.yarnpkg.com/@fontsource/changa-one/-/changa-one-5.0.19.tgz#7401cfc48c7e184a7a2cae1ee59cbbb96af5231f"
+  integrity sha512-FJ4R5dAIT0P1nzd8mm2QpmJRayblQNADvx68672tJUkMr+OJzDJSp9RhS/DXOVw4lwIU4MsO25eGO4M7zN+P2Q==
 
-"@fontsource/changa@^5.0.18":
-  version "5.0.18"
-  resolved "https://registry.yarnpkg.com/@fontsource/changa/-/changa-5.0.18.tgz#ad8f9c9c908adffa1f175ed89a9f525f4ea531d6"
-  integrity sha512-fOS1xdhDnAM1M6LgCTDXS0cMGZyAbDY7iuJayBkifCoD8+9q5uHdK61Cg5OHT6UeYSFPoWQaAekvLMIkqU6kgQ==
+"@fontsource/changa@^5.0.20":
+  version "5.0.20"
+  resolved "https://registry.yarnpkg.com/@fontsource/changa/-/changa-5.0.20.tgz#bae1c89c0f01dacff91d455953d7508181dd0666"
+  integrity sha512-S3+kTcLuBu48WnJG2rVj3XI0slc1tBZiA5T4W40wctn734qC3/gJqaq/Q9xkDGyTnkNa4SVH4jcYo+pDoC2HyQ==
 
 "@img/sharp-darwin-arm64@0.33.4":
   version "0.33.4"
