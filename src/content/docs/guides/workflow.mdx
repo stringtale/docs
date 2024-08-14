@@ -14,7 +14,7 @@ to incorporate Stringtale into their workflow.
 
 To get started, you have to integrate Stringtale into your code base and deploy it to your test / preview environment.
 
-1. Use `stringtale init` to integrate Stringtale into a new or existing project.
+1. Use `stringtale init` to integrate Stringtale into a new or existing project. For the full guide on how to use this command, please refer to the [getting started](/guides/getting-started).
 2. Create a `API key` in the [Stringtale Dashboard](https://stringtale.com/app/projects).
 3. Deploy your project to your test/preview environment.
 4. Let your client make the changes they require.
@@ -25,7 +25,7 @@ To get started, you have to integrate Stringtale into your code base and deploy 
 ### Adding new static text to your project
 
 At some during the development of your project you'll have to add new static text to your project. The easiest way to achieve this is by using
-the [ESlint plugin](/usage/eslint-plugin) / extension for your editor.
+the [ESlint plugin](/usage/eslint-plugin) or using the [VS Code extension](/usage/vscode-extension).
 
 1. Create your component with the static text.
 2. Select the text you've just added.
@@ -36,6 +36,19 @@ the [ESlint plugin](/usage/eslint-plugin) / extension for your editor.
       We recommend you only change it on initial implementation to
       avoid synchronization issues.
     </Aside>
+
+### Pulling in changes that have been made externally
+1. Use `stringtale pull` to pull in the latest changes from Stringtale.
+2. You'll notice that any updated `<Value>` tags will now have a `version` attribute. This is what the CLI uses to deterine if the text
+has to be updated or not. You should not update the `version` attribute manually.
+3. Once you've reviewd the changes, you can commit them to repository, ready for the next update.
+
+### Manually updatting text in your code base
+When using Stringtale, you're not limited to text changes through the browser. It's still entirely possible to make changes directly in your code base.
+In order to change the text inside your code base, you only have to change the text in your code base and commit it to your repository. There's no need
+to manually add or update the `version` attribute. The version attribute is only used to determine if changes from outside the repository have been made
+and need to be pulled in. 
+
 
 ## For your clients
 
