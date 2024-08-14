@@ -38,14 +38,11 @@ will differ, usually it's either in `.eslintrc.js` or `eslint.config.js`.
 
     ```js
       module.exports = {
-        rules: {
-          "@stringtale/no-unwrapped-jsx-text": "error",
-          "@stringtale/no-string-jsx-attributes": "warn",
-          "@stringtale/no-dynamic-value-name-attribute": "error",
-          "@stringtale/no-dynamic-value-children": "error",
-        },
-        plugins: ["@stringtale"]
-      }  
+        "plugins": ["@stringtale"],
+        "extends": [
+          "plugin:@stringtale/recommended"
+        ]
+      }
     ```
 
     For more information on how to
