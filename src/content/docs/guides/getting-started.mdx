@@ -158,17 +158,24 @@ To start using Stringtale on a subset of your strings, please refer to the docum
 
 ## Deploying Stringtale to your test environment
 
-Deploying Stringtale to your test environment is easy. Just deploy your application as usual, add `STRINGTALE_API_KEY` to your
-environment variables and you're good to go. You can start using Stringtale by adding `?stringtale` to the URL or use our browser extension.
+Deploying Stringtale to your test environment is very straight forward. Just deploy your application as usual, add `STRINGTALE_API_KEY` to your
+environment variables and you're good to go. To obtain the `STRINGTALE_API_KEY` you can follow the steps below:
+1. Go to the [Stringtale Dashboard](https://stringtale.com/app).
+2. Go to [Projects](https://stringtale.com/app/projects)
+3. Open the project (or click on Edit project settings) you want to deploy to your test / preview environment.
+4. Scroll down to `Tokens`
+5. Click on `Add Token` and create a new token
+  <Image src={step24} alt="Tokens section of Stringtale project" />
+6. Save the token somewhere safe, you'll need it later.
+  <Image src={step25} alt="Example of a token"  />
+7. Enable 'Write' permissions for the newly created token by checking the checkbox for 'Can write'.
 
-{/* Steps to obtain the variable */}
+Now you can deploy your application and add `STRINGTALE_API_KEY` to your environment variables. You can start using Stringtale by adding `?stringtale` to the URL or by using our [browser extension](/usage/browser-extension).
 
-For more information on how to use Stringtale once you've deplyed it, checkout the [workflow](/guides/workflow) documentation.
+For more information on how to use Stringtale once you've deployed it, checkout the [workflow](/guides/workflow) documentation.
 
 <Aside type="caution">
    It's highly recommended you lock down your test / preview environment through some form authentication (i.e. basic auth),
    as there's no user authentication for text edits in Stringtale at this moment. This means that without authentication,
    anyone would be able to edit text on your website.
 </Aside>
-
-{/* Test environment, set ENV_VARIABLE X */}
