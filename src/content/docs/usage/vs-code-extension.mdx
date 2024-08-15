@@ -13,9 +13,10 @@ Learn how to use the Visual Studio Code Extension.
 
 ## What does it do?
 
-The Visual Studio Code Extension allows you to wrap your static text with `<Value>` tags automatically along with generating unique `name` attributes.
+The Visual Studio Code Extension allows you to wrap your static text with `<Value>` tags automatically along with generating unique `name` attributes. It even
+supports automatically wrapping variables and placing them in the format attribute of the `<Value>` tag.
 
-## How do I use it?
+## Basic usage
 
 1. Install the Stringtale [Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=Stringtale.stringtale) from
 the Visual Studio Marketplace
@@ -39,12 +40,13 @@ you to rename it. We recommend you limit renaming to new tags and not existing o
 6. That's it! The name attribute will be used to store information once the text changes, there's no need to push
 it to the server.
 
-## Automatic wrapping of string iterpolated variables
+## Advanced usage
 
-The Visual Studio Code extension isn't limited to just static text. It supports automatically wrapping variables and placing them in
-the format attribute of the `<Value>` tag.
+The demonstration above shows basic usage of how to wrap plain text with a `<Value>` tag. But the functionality of Stringtale isn't limted to just plain text. It
+supports string interpolation and inline components. Below is an example of how to have the Visual Studio Code extension automatically wrap a piece of text with
+a string interpolated variable.
 
-So when you select the text and execute the `Stringtale: Wrap` command, the VS Code extension will automatically and populate the format attribute.
+The usage is exactly the same as the basic usage. Just select the text "Welcome: {name}" and execute the `Stringtale: Wrap` command.
 ```tsx
 import { Value } from "@stringtale/react";
 
