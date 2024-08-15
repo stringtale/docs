@@ -4,6 +4,10 @@ description: A guide to help you get started with Stringtale
 ---
 
 import { Aside } from "@astrojs/starlight/components";
+import { Image } from 'astro:assets';
+import step24 from '../../../assets/images/workflow/step-2-4.png'
+import step25 from '../../../assets/images/workflow/step-2-5.png' 
+
 
 Getting started with new technology can be challenging. The following workflow has proven helpful for people
 to incorporate Stringtale into their workflow.
@@ -15,12 +19,21 @@ to incorporate Stringtale into their workflow.
 To get started, you have to integrate Stringtale into your code base and deploy it to your test / preview environment.
 
 1. Use `stringtale init` to integrate Stringtale into a new or existing project. For the full guide on how to use this command, please refer to the [getting started](/guides/getting-started).
-2. Create a `API key` in the [Stringtale Dashboard](https://stringtale.com/app/projects).
-3. Deploy your project to your test/preview environment.
-4. Let your client make the changes they require.
-5. Either use `stringtale pull` to pull their changes to your source code or let our [GitHub action](/usage/github-action) create a pull request
+2. Create a `API key` in the [Stringtale Dashboard](https://stringtale.com/app).
+   1. Go to [Projects](https://stringtale.com/app/projects)
+   2. Open the project (or click on Edit project settings) you want to deploy to your test / preview environment.
+   3. Scroll down to `Tokens`
+   4. Click on `Add Token` and create a new token
+      <Image src={step24} alt="Tokens section of Stringtale project" />
+   5. Save the token somewhere safe, you'll need it later.
+      <Image src={step25} alt="Example of a token"  />
+   6. Enable 'Write' permissions for the newly created token by checking the checkbox for 'Can write'.
+3. Deploy your project to your test/preview environment. Add the token you just saved as the environment variable `STRINGTALE_API_KEY`.
+4. Stringtale will now be available in your test / preview environment.
+5. Let your client make the changes they require.
+6. Either use `stringtale pull` to pull their changes to your source code or let our [GitHub action](/usage/github-action) create a pull request
    on your next commit.
-6. Review the changes and accept them to your code base, ready for release with the next update.
+7. Review the changes and accept them to your code base, ready for release with the next update.
 
 ### Adding new static text to your project
 
