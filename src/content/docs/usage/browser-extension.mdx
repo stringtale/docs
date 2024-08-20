@@ -3,4 +3,28 @@ title: Browser extension
 description: A guide on how to and use the Chrome Extension.
 ---
 
-To be written
+import { Image } from 'astro:assets'
+import stringtaleMenu from '../../../assets/images/browser-extension/stringtale-menu.png'
+import original from '../../../assets/images/browser-extension/original.png'
+import browserIcon from '../../../assets/images/browser-extension/browser-icon.png'
+import editableFields from '../../../assets/images/browser-extension/editable-fields.png'
+import changedText from '../../../assets/images/browser-extension/changed-text.png' 
+
+The browser extension allows you to more enable Stringtale on your webpage. It avoids the paging having to reload, allowing you to make changes
+to the copy of your modals (which would otherwisedisappear once the page reloads). It's also the user-friendly alternative to appending `?stringtale` to the URL
+
+## Install and use the browser extension
+
+1. Install the browser extension from the [Chrome Web Store](https://chrome.google.com/webstore).
+2. Navigate to your project's test / preview environment. We'll use the [Stringtale website](https://stringtale.com/demo) for this guide. 
+   <Image src={original} alt="Original website" />
+3. Click the Stringtale button in the toolbar of your browser.
+   <Image src={browserIcon} alt="Stringtale browser icon" width="199px" />
+4. Stringtale will now become visible on the page
+   <Image src={stringtaleMenu} alt="Save changes button" width="341px" />
+5. You'll notice that something changed about the text on the page. They've now become editable textfields that allow you to alter the text of the page.
+   <Image src={editableFields} alt="Editable fields" />
+6. You can now make changes to the text on the page. When you hit preview, it'll display a preview of your changes without the editable textfields.
+   <Image src={changedText} alt="Changed text" />
+7. Once you've finished making changes, click on `Save changes` to save them to Strintale, ready for the developer to integrate with the next update.
+   

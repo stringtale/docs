@@ -6,6 +6,10 @@ description: A guide to get started with Stringtale
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 import { Aside } from "@astrojs/starlight/components";
 
+import { Image } from 'astro:assets';
+import step24 from '../../../assets/images/workflow/step-2-4.png'
+import step25 from '../../../assets/images/workflow/step-2-5.png' 
+
 Looking to integrate Stringtale into your (existing) project? You've come to the right place! This guide will lead
 you through the required steps and get you up and running in minutes.
 
@@ -26,7 +30,7 @@ components.
 Stringtale works as a client side JavaScript library that activates either by either adding `?stringtale` to the URL
 or by enabling it through the [Chrome extension](/usage/browser-extension). When edited text gets saved, it makes
 a call to the `/api/stringtale` route of your back-end, which then passes it on to Stringtale for storage. Your back-end
-will then in turn call the Strintale API, authenticating using the `Deploy key`.
+will then in turn call the Stringtale API, authenticating using the `Deploy key`.
 
 ## Integrating Stringtale
 
@@ -167,7 +171,7 @@ environment variables and you're good to go. To obtain the `STRINGTALE_API_KEY` 
 5. Click on `Add Token` and create a new token
   <Image src={step24} alt="Tokens section of Stringtale project" />
 6. Save the token somewhere safe, you'll need it later.
-  <Image src={step25} alt="Example of a token"  />
+  <Image src={step25} alt="Example of a token" width="564px" />
 7. Enable 'Write' permissions for the newly created token by checking the checkbox for 'Can write'.
 
 Now you can deploy your application and add `STRINGTALE_API_KEY` to your environment variables. You can start using Stringtale by adding `?stringtale` to the URL or by using our [browser extension](/usage/browser-extension).
