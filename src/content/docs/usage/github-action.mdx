@@ -55,7 +55,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Run stringtale action
-      uses: demonsters/stringtale-action@v0.2.14
+      uses: demonsters/stringtale-action@v0.3.2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided by GitHub
         # STRINGTALE_TOKEN is the Deploy Token for your project in the dashboard
@@ -67,7 +67,7 @@ jobs:
 Alternatively to having Github trigger the workflow, you can also set up a webhook to trigger the GitHub action instead. This however has the limitation that it only works
 for the main branch. This is a limitation of GitHub Actions. So if you want to run Stringtale on other branches, you will need to use the GitHub action.
 
-1. Follow the steps above to set up the GitHub action, but replace the section `on: push:` with `on: repository_dispatch:` as follows:
+1. Follow the steps above to set up the [GitHub action for pushes](/usage/github-action/#pushing-to-a-branch), but replace the section `on: push:` with `on: repository_dispatch:` as follows:
    ```yaml
    name: Stringtale
    
