@@ -26,7 +26,7 @@ Below is an example of how to set up a GitHub action to run Stringtale on every 
 
 1. Navigate to the [Stringtale Dashboard](https://stringtale.com/app) and [obtain yourself a Stingtale token](/usage/obtaining-token).
 3. Go to your GitHub repository => Settings => Environments.
-4. Add the Token you obtained from the dashboard as `STRINGTALE_TOKEN` to the required environment(s) or create a new one.
+4. Add the Token you obtained from the dashboard as `STRINGTALE_API_KEY` to the required environment(s) or create a new one.
 5. Create a `stringtale.yaml` file in the `.github/workflows` folder in the root of your project. For example
 `<PROJECT_DIRECTORY>/.github/workflows/stringtale.yaml`.
 6. Use the example YAML file from below and adjust to your project's needs.
@@ -58,8 +58,8 @@ jobs:
       uses: demonsters/stringtale-action@v0.3.2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided by GitHub
-        # STRINGTALE_TOKEN is the token that the CI uses to access the Stringtale API
-        STRINGTALE_TOKEN: ${{ secrets.STRINGTALE_TOKEN }}
+        # STRINGTALE_API_KEY is the token that the CI uses to access the Stringtale API
+        STRINGTALE_API_KEY: ${{ secrets.STRINGTALE_API_KEY }}
 
 ```
 

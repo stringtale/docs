@@ -41,7 +41,7 @@ execute the following steps manually.
     const app = express()
     
     app.all('/api/stringtale', setupRoute({
-      apiKey: process.env.STRINGTALE_TOKEN!
+      apiKey: process.env.STRINGTALE_API_KEY!
     }))
     ```
     {/* Add step about env file */}
