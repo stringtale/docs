@@ -18,8 +18,8 @@ to just release branches.
 
 ## How do I use it?
 
- There are two ways to trigger the GitHub action. You can either use the various triggers that Github has to offer (we recommend pushes to a branch), or by letting 
- Stringtale call a webhook whenever text updates are made. Both will then in turn create a pull request with the latest text changes.
+There are two ways to trigger the GitHub action. You can either use the various triggers that Github has to offer (we recommend pushes to a branch), or by letting 
+Stringtale call a webhook whenever text updates are made. Both will then in turn create a pull request with the latest text changes.
 
 ### Pushing to a branch
 Below is an example of how to set up a GitHub action to run Stringtale on every push to any branch in your repository, including an example yaml file for the workflow.
@@ -95,4 +95,4 @@ for the main branch. This is a limitation of GitHub Actions. So if you want to r
 4. Scroll down to `Webhooks` and click on `Add Webhook`.
 5. For type select 'GitHub' and for the URL enter `https://api.github.com/repos/{owner}/{repository}/dispatches`, replacing `{owner}` with the name of the owner of the repository (typically your organization) and `{repository}` with the name of the repository
 as they'd normally appear in the URL when you navigate to the repository on GitHub. For more information see the [GitHub documentation](https://docs.github.com/en/webhooks/webhook-events-and-payloads#repository_dispatch) on webhook events and payloads.
-6. Now whenever you press 'Save changes' in Stringtale, a webhook will automatically be fired to trigger the GitHub action.
+6. From now on whenever somebody presses 'Save changes' in Stringtale, a webhook will automatically be fired to trigger the GitHub action.
