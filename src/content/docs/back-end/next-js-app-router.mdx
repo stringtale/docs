@@ -3,7 +3,7 @@ title: Next.js - App router
 description: Implementation guide for using Stringtale with Next.js when using the app router
 ---
 
-import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Tabs, TabItem } from "@astrojs/starlight/components"
 
 ## App router
 
@@ -16,58 +16,56 @@ To use Stringtale in your Next.js application with the app router you can either
 execute the following steps manually.
 
 1. Install the `@stringtale/next` and `@stringtale/react` package in your project using your package manager.
+
    <Tabs>
      <TabItem label="npm">
-       ```bash
-         npm install @stringtale/next @stringtale/react
-       ```
+       ```bash npm install @stringtale/next @stringtale/react ```
      </TabItem>
      <TabItem label="Yarn">
-       ```bash
-         # If you're using a monorepo with workspaces, add it to the right workspace
-         yarn add @stringtale/next @stringtale/react
-       ```
-      </TabItem>
+       ```bash # If you're using a monorepo with workspaces, add it to the right
+       workspace yarn add @stringtale/next @stringtale/react ```
+     </TabItem>
      <TabItem label="pnpm">
-       ```bash
-         pnpm install @stringtale/next @stringtale/react
-       ```
-      </TabItem>
+       ```bash pnpm install @stringtale/next @stringtale/react ```
+     </TabItem>
    </Tabs>
 
 2. Create a new file `app/api/stringtale.ts` and add the following content:
 
-    ```tsx
-      import { setupRoute } from '@stringtale/next/server'
+   ```tsx
+   import { setupRoute } from "@stringtale/next/server"
 
-      export default setupRoute({
-        apiKey: process.env.STRINGTALE_API_KEY!,
-      })
-    ```
+   export default setupRoute({
+     apiKey: process.env.STRINGTALE_API_KEY!,
+   })
+   ```
+
 3. Add `STRINGTALE_API_KEY` to your `.env.local` file. This token can be obtained from the [Stringtale Dashboard](https://stringtale.com/app).
-    ```
-      STRINGTALE_API_KEY=YOUR_API_KEY
-    ```
+   ```
+     STRINGTALE_API_KEY=YOUR_API_KEY
+   ```
    _For more information on how to obtain a token, please refer to the [obtaining a token](/usage/obtaining-token) guide._
 4. Add `<StringtaleProvider>` and Stringtale's CSS to your `RootLayout` in `app/layout.tsx` as such:
 
    ```tsx
-    import { StringtaleProvider } from "@stringtale/next/client"
-    import "@stringtale/react/styles.css"
+   import { StringtaleProvider } from "@stringtale/next"
+   import "@stringtale/react/styles.css"
 
-    export default async function RootLayout({
-      children,
-    }: {
-      children: React.ReactNode
-    }) {
-      return (
-        <html>
-          <body>
-            <StringtaleProvider>{children}</StringtaleProvider>
-          </body>
-        </html>
-      )
-    }
-    ```
-    For more information about RootLayout see the [NextJS documentation](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required).
+   export default async function RootLayout({
+     children,
+   }: {
+     children: React.ReactNode
+   }) {
+     return (
+       <html>
+         <body>
+           <StringtaleProvider>{children}</StringtaleProvider>
+         </body>
+       </html>
+     )
+   }
+   ```
+
+   For more information about RootLayout see the [NextJS documentation](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required).
+
 5. You're now ready to use Stringtale in your project. For more information on how to use Stringtale with React see our [React documentation](/front-end/react).
