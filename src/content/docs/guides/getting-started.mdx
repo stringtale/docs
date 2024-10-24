@@ -4,9 +4,9 @@ description: A guide to get started with Stringtale
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
-import { Aside } from "@astrojs/starlight/components";
+import { Aside } from "@astrojs/starlight/components"
 
-import { Image } from 'astro:assets';
+import { Image } from 'astro:assets'
 import step24 from '../../../assets/images/workflow/step-2-4.png'
 import step25 from '../../../assets/images/workflow/step-2-5.png' 
 
@@ -102,6 +102,7 @@ and existing project. To use the CLI, follow the steps below.
               ```tsx
               import type { AppProps } from 'next/app'
               import { StringTaleProvider } from "@stringtale/next"
+              import "@stringtale/react/styles.css"
  
               export default function MyApp({ Component, pageProps }: AppProps) {
                 return (
@@ -149,11 +150,11 @@ and existing project. To use the CLI, follow the steps below.
 ### Integrating Stringtale on your front-end
 
 In order to integrate Stringtale in your React front-end you can either start wrapping your strings manually,
-or make use of our Codegen.
+or make use of our Codemod.
 
-#### Automated wrapping using Codegen
+#### Automated wrapping using Codemod
 
-You can wrap all the static text in your sourcecode using our Codegen utility. By running `stringtale codegen` our CLI will
+You can wrap all the static text in your sourcecode using our Codemod utility. By running `stringtale codemod` our CLI will
 automatically wrap all the static text in your codebase in `<Value>` tags and generate name attributes for them.
 
 #### Manual wrapping
