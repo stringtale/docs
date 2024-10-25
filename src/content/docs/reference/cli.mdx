@@ -3,13 +3,16 @@ title: CLI
 description: An overview of all CLI commands
 ---
 
-import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Tabs, TabItem } from "@astrojs/starlight/components"
+import { Aside } from "@astrojs/starlight/components";
 
 A reference guide for all CLI options. Note that all sub commands can be ran with the `--help` option to display more information about the command.
 
 ## Installation
 
-You can install the CLI using your JavaScript package manager.
+You can install the CLI globally using your JavaScript package manager. Or use your package manager to run it directly.
+
+To install globally you can use:
 
 <Tabs>
   <TabItem label="npm">
@@ -17,14 +20,35 @@ You can install the CLI using your JavaScript package manager.
       npm install -g @stringtale/cli
     ```
   </TabItem>
-  <TabItem label="Yarn">
+  <TabItem label="Yarn v1 / v2">
     ```bash
       yarn global add @stringtale/cli
     ```
+    **Note:** Installing npm packages globally is no longer supported as of Yarn v3. See below how you can run it directly instead.
   </TabItem>
   <TabItem label="pnpm">
     ```bash
       pnpm install -g @stringtale/cli
+    ```
+  </TabItem>
+</Tabs>
+
+To run Stringtale directly:
+
+<Tabs>
+  <TabItem label="npm / npx">
+    ```bash
+      npx @stringtale/cli
+    ```
+  </TabItem>
+  <TabItem label="Yarn v3+">
+    ```bash
+      yarn dlx @stringtale/cli
+    ```
+  </TabItem>
+  <TabItem label="pnpm">
+    ```bash
+      pnpm exec @stringtale/cli
     ```
   </TabItem>
 </Tabs>
@@ -36,6 +60,11 @@ You can use the Stringtale CLI as follows.
 ```bash
 stringtale [command] [options]
 ```
+
+<Aside type="tip">
+  If you decide to use the CLI directly without installing, just replace `stringtale [command]` with the equivalent `packageManager @stringtale/cli [command]`.  
+</Aside>
+
 
 ## Commands
 
@@ -59,10 +88,25 @@ the GitHub action.
 
 Automatically wraps all plain text in your source code in `<Value>` tags so they can be edited once Stringtale is actived.
 
-### `help` / `--help`
-
-Displays information about the various commands. You can run each command with the `--help` option for more information about it's use. 
-
 ### `logout`
 
 Signs out Stringtale and deletes your local token from `~/.config/stringtale/token.json`.
+
+### Options
+
+Options can be used to modify the behaviour of the command. The list below is not exhausting, but rather a list of common options that are used with most commands.
+
+### `-e` option
+
+The `-e` option can be used as a boolean in conjuction with any of the other commands. When used the .env file from the current working directory will be loaded and used to authenticate.
+
+### `--help` option
+
+The `-help` option can be used as a boolean in conjuction with any of the other commands. Doing so will print additional information for options that can be used with that command.
+
+## Environment variables
+
+### `STRINGTALE_API_KEY`
+
+The STRINGTALE_API_KEY is a project based API key. It can be used to pull in text edits from Stringtale to your local source code. You can use this with the CLI if your code isn't
+hosted by GitHub or you don't want to use the GitHub action.
