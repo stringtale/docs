@@ -4,6 +4,8 @@ description: Implementation guide for using Stringtale with Next.js when using t
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Aside } from "@astrojs/starlight/components"
+
 
 ## Pages router
 
@@ -49,9 +51,13 @@ execute the following steps manually.
     ```
    _For more information on how to obtain an API key, please refer to the [obtaining an API key](/usage/obtaining-api-key) guide._
 4. Update your `App` component in `<PROJECT_DIRECTORY>/pages/_app.tsx` and wrap your app using `<StringtaleProvider>` as follows:
-
+      <Aside type="caution">
+        **Important:** When using the pages router, you must import the `StringtaleProvider` from `@stringtale/react` or certain features such as login will break.
+      </Aside>
       ```tsx
         import type { AppProps } from 'next/app'
+        // When using pages router, make sure to import
+        // from @stringtale/react, not @stringtale/next
         import { StringtaleProvider } from "@stringtale/react"
         import "@stringtale/react/styles.css"
  
@@ -64,4 +70,5 @@ execute the following steps manually.
         }
       ```
       For more information about customizing the `App` component see the [NextJS documentation](https://nextjs.org/docs/pages/building-your-application/routing/custom-app).
+      
 5. You're now ready to use Stringtale in your project. For more information on how to use Stringtale with React see our [React documentation](/front-end/react).
