@@ -8,6 +8,7 @@ import step2 from '../../../assets/images/vscode-extension/step-2.png'
 import step3 from '../../../assets/images/vscode-extension/step-3.png'
 import step4 from '../../../assets/images/vscode-extension/step-4.png'
 import step5 from '../../../assets/images/vscode-extension/step-5.png'
+import { Aside } from "@astrojs/starlight/components"
 
 Learn how to use the Visual Studio Code Extension.
 
@@ -57,7 +58,7 @@ const name = "John Doe"
 </span>
 ```
 
-Will automatically be transformed to
+Will automatically be transformed to:
 
 ```tsx
 import { Value } from "@stringtale/react";
@@ -69,7 +70,11 @@ const name = "John Doe"
     name="apps.web.src.index.welcome_name"
     format={{ name }}
   >
-    {`Welcome: {name} `}
+    {/* HTML */ `Welcome: {name} `}
   </Value>
 </span>
 ```
+
+<Aside type="note">
+  The `/* HTML */ prefix is used as a hint for your IDE to handle formatting correctly. Even though it's not strictly HTML, the job done.
+</Aside>
