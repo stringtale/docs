@@ -9,9 +9,10 @@ import original from '../../../assets/images/browser-extension/original.png'
 import browserIcon from '../../../assets/images/browser-extension/browser-icon.png'
 import editableFields from '../../../assets/images/browser-extension/editable-fields.png'
 import changedText from '../../../assets/images/browser-extension/changed-text.png' 
+import loginScreen from '../../../assets/images/browser-extension/login.png' 
 
 The browser extension allows you enable Stringtale with the push of a button. It avoids the paging having to reload, allowing you to make changes
-to the copy of your modals (which would otherwisedisappear once the page reloads). It's also the user-friendly alternative to appending `?stringtale` to the URL
+to the copy of your modals (which would otherwise disappear once the page reloads). It's also the user-friendly alternative to appending `?stringtale` to the URL
 
 ## Install and use the browser extension
 
@@ -28,3 +29,16 @@ to the copy of your modals (which would otherwisedisappear once the page reloads
    <Image src={changedText} alt="Changed text" />
 7. Once you've finished making changes, click on `Save changes` to save them to Strintale, ready for the developer to integrate with the next update.
    
+## (Optional) Enable login
+
+You may have noticed that in the example above you were immediately able to edit all text on the website. This might not be desirable in your organization.
+Stringtale offers a solution for that in the form of editor logins.
+
+1. Go to the [Stringtale Dashboard](https://stringtale.com/app).
+2. Go to [Projects](https://stringtale.com/app/projects)
+3. Open the project (or click on Edit project settings) you want to deploy to your test / preview environment.
+4. Click on `Add Token` and create a new token, make sure to check "Enable login"
+5. Update your test environment with the new token
+6. The next time somebody attempts to update text on the website, they'll be greeted with a login screen:
+   <Image src={loginScreen} alt="Stringtale login" width="331px" />
+7. To manage which Developers / Editors can edit text within a project, either add them to a Workspace or a Project.
