@@ -3,21 +3,27 @@ title: Slack webhook
 description: A guide on how to enable the Slack webhook.
 ---
 
-Learn how to get notified of text updates in your Slack channel using the Slack webhook.
+This guide will teach you how to enable Slack notifications for text updates in your project(s).
 
 ## What does it do?
 
-The Slack webhook will automatically send a notification to your Slack channel whenever text updates are made in Stringtale. It's currently very rudementary in that it will send a message for every key that is updated, but this will be improved in the future.
+The Slack webhook will automatically send a notification to your Slack channel whenever text updates are made using Stringtale. It will send a separate notification for every key that has been updated, this will be improved in the future.
 
 ## Why use it?
-The Slack webhook is a great way to get notified of text updates in your Slack channel. This way you'll know if there are any changes without having to check them manually, which is especially useful when you work on multiple projects.
+The Slack webhook is a great way to stay on top of text edits in your various projects. Rather than having to check manually each time if there's a pending pull request, you get notified when the text edits have been made.
 
 ## How do I use it?
 
 In order to use Slack Webhooks, you need to create a custom Slack app and enter it's Webhook URL into Stringtale. You can achieve this by following these steps:
 
-1. Create a new Slack app for your workspace by following the [Getting started with incoming webhooks guide](https://api.slack.com/messaging/webhooks#getting_started_with_incoming_webhooks) on Slacks developer docs.
-2. Once create, you should have a Webhook URL looking something like this:
+1. Create a new Slack app for your Slack workspace by following the [Getting started with incoming webhooks guide](https://api.slack.com/messaging/webhooks#getting_started_with_incoming_webhooks) on Slacks API docs. Below are the individual steps and settings required.
+   1. Click on `Create your Slack app`
+   2. On the next step choose `From scratch`
+   3. Give the app a name and select a Workspace for which you want to enable the app
+   4. Once you've created the app, navigate to `Incoming Webhooks` in the menu on the left
+   5. Turn on `Activate incoming webhooks`
+   6. Once enabled, click on `Add new Webhook` and select the channel in which you want to receive your stringtale updates and click Allow.
+2. Once you've created the Webhook, you'll get a Webhook URL which looks something like the URL below. Click copy, we need it in a few steps. 
    `https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`.
 3. Go to the [Stringtale Dashboard](https://stringtale.com/app).
 4. Go to [Projects](https://stringtale.com/app/projects).
