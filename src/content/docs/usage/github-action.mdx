@@ -10,6 +10,7 @@ Learn how to use the Stringtale GitHub Action in your workflow for text updates.
 The Stringtale GitHub Action automatically creates Pull Requests in your GitHub repository with the latest text updates stored in Stringtale.
 
 ## Why use it?
+
 The GitHub action automates the process of implementing text changes that have made by you or your client. Your team will gets notified automatically
 of new Pull Requests, allowing you to see if there is an update without having to check manually.
 
@@ -18,21 +19,22 @@ to just release branches.
 
 ## How do I use it?
 
-There are two ways to trigger the GitHub action. You can either use the various triggers that GitHub has to offer (for example when pushing to a branch), or by letting 
+You can either use the various triggers that GitHub has to offer (for example when pushing to a branch), or by letting
 Stringtale call a webhook whenever text updates are made. Both will then in turn create a pull request with the latest text changes.
 
 ### Pushing to a branch
+
 Below is an example of how to set up a GitHub action to run Stringtale on every push to any branch in your repository, including an example yaml file for the workflow.
 
 1. Navigate to the [Stringtale Dashboard](https://stringtale.com/app) and [obtain yourself an API key](/usage/obtaining-api-key).
-3. Go to your GitHub repository => Settings => Environments.
-4. Add the Token you obtained from the dashboard as `STRINGTALE_API_KEY` to the required environment(s) or create a new one.
-5. Create a `stringtale.yaml` file in the `.github/workflows` folder in the root of your project. For example
-`<PROJECT_DIRECTORY>/.github/workflows/stringtale.yaml`.
-6. Use the example YAML file from below and adjust to your project's needs.
-7. The next time this workflow gets triggered Stringtale will automatically create a Pull Request with any pending changes to the branch that triggered it.
+2. Go to your GitHub repository => Settings => Environments.
+3. Add the Token you obtained from the dashboard as `STRINGTALE_API_KEY` to the required environment(s) or create a new one.
+4. Create a `stringtale.yaml` file in the `.github/workflows` folder in the root of your project. For example
+   `<PROJECT_DIRECTORY>/.github/workflows/stringtale.yaml`.
+5. Use the example YAML file from below and adjust to your project's needs.
+6. The next time this workflow gets triggered Stringtale will automatically create a Pull Request with any pending changes to the branch that triggered it.
 
-**Example yaml for GitHub actions** 
+**Example yaml for GitHub actions**
 
 The example yaml file below will enable Stringtale to run on all branches on all pushes. If you prefer a different workflow, please refer
 to the [GitHub Actions documentation](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
@@ -43,53 +45,57 @@ name: Stringtale
 on:
   push:
     branches:
-      - '**' # Where ** Mean all branches, * only matches every branch that doesn't contain a '/'
+      - "**" # Where ** Mean all branches, * only matches every branch that doesn't contain a '/'
 
 jobs:
   build-web:
     runs-on: ubuntu-latest # Or i.e. ubuntu-20.04, no version requirement there
     environment: CHANGE-ME # Change this to your GitHub environment
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Run stringtale action
-      uses: demonsters/stringtale-action@v0.3.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided by GitHub
-        # STRINGTALE_API_KEY is the token that the CI uses to access the Stringtale API
-        STRINGTALE_API_KEY: ${{ secrets.STRINGTALE_API_KEY }}
-
+      - name: Run stringtale action
+        uses: demonsters/stringtale-action@v0.3.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Automatically provided by GitHub
+          # STRINGTALE_API_KEY is the token that the CI uses to access the Stringtale API
+          STRINGTALE_API_KEY: ${{ secrets.STRINGTALE_API_KEY }}
 ```
 
 ### Using the Stringtale GitHub webhooks
-Alternatively to having GitHub trigger the workflow, you can also set up a webhook to trigger the GitHub action instead. This however has the limitation that it only works
-for the main branch. This is a limitation of GitHub Actions. So if you want to run Stringtale on other branches, you will need to use the GitHub action.
+
+Stringtale can automatically trigger the GitHub action, using webhooks, whenever changes get saved. This does have the limitation that it only works
+for the main branch. This is a limitation of GitHub Actions. If you want to run Stringtale on other branches, you will need to use the GitHub action.
 
 1. Follow the steps above to set up the [GitHub action for pushes](/usage/github-action/#pushing-to-a-branch), but replace the section `on: push:` with `on: repository_dispatch:` as follows:
+
    ```yaml
    name: Stringtale
-   
+
    # Remove this section:
    on:
      push:
        branches:
-          - '**'
+         - "**"
 
    # Keep everything from jobs: onwards
    ```
+
    ```yaml
    name: Stringtale
-   
+
    # Replace with this section:
    on:
-      repository_dispatch:
-        types: stringtale
+     repository_dispatch:
+       types: stringtale
 
    # Keep everything from jobs: onwards
    ```
+
    For more info about the repository dispatch event and it's payload, refer to the GitHub documentation [Create a repository dispatch event](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-dispatch-event) and the [Webhook events and payloads documentation](https://docs.github.com/en/webhooks/webhook-events-and-payloads#repository_dispatch)
+
 2. To allow Stringtale to communicate with your GitHub repository, we need a `Fine grained personal access token`. You can set this up by following these steps:
    1. Go to your [GitHub profile settings](https://github.com/settings/profile).
    2. In the menu on the left select the bottom most option `Developer Settings`
@@ -97,15 +103,15 @@ for the main branch. This is a limitation of GitHub Actions. So if you want to r
    4. Click on `Generate new token`
    5. Give it a name and choose an expiration date
    6. Under Repository access choose `Only select repositories` and select which repository/repositories the token should apply to.
-   7. Open up the newly appeared `Repository permissions` section and select the following permissions:
-      - Actions: Read and Write
-      - Metadata: Read-only
-      - Contents: Read and Write
+   7. In the Permissions section, add the following 3 permissions:
+      - Actions: Read and Write (required to trigger the Action using the webhook)
+      - Contents: Read and Write (required to update the code)
+      - Metadata: Read-only (gets automatically added when you add any of the other ones)
    8. Click on Generate Token and copy the token, we'll need it later at step 5.
-2. Navigate to the [Stringtale Dashboard](https://stringtale.com/app).
-3. Go to [Projects](https://stringtale.com/app/projects).
-3. Open the project (or click on Edit project settings) you wnat to enable webhooks for.
-4. Scroll down to `Webhooks` and click on `Add Webhook`.
-5. For type select 'GitHub', give it a name and for the URL enter `https://api.github.com/repos/{owner}/{repository}/dispatches`, replacing `{owner}` with the name of the owner of the repository (typically your organization) and `{repository}` with the name of the repository
-as they'd normally appear in the URL when you navigate to the repository on GitHub. For `Token` you enter the previously generated `Fine grained access token`. 
-6. From now on whenever somebody presses 'Save changes' in Stringtale, a webhook will automatically be fired to trigger the GitHub action.
+3. Navigate to the [Stringtale Dashboard](https://stringtale.com/app).
+4. Go to [Projects](https://stringtale.com/app/projects).
+5. Open the project (or click on Edit project settings) you want to enable webhooks for.
+6. Scroll down to `Webhooks` and click on `Add Webhook`.
+7. For type select 'GitHub', give it a name and for the URL enter `https://api.github.com/repos/{owner}/{repository}/dispatches`, replacing `{owner}` with the name of the owner of the repository (typically your organization) and `{repository}` with the name of the repository
+   as they'd normally appear in the URL when you navigate to the repository on GitHub. For `Token` you enter the `Fine grained access token` generated at the previous step.
+8. From now on whenever somebody presses 'Save changes' in Stringtale, a webhook will automatically be fired to trigger the GitHub action.
