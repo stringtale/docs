@@ -1,0 +1,57 @@
+---
+title: Terminology
+description: A reference for terminology used in Stringtale, sorted by alphabet.
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { Aside } from "@astrojs/starlight/components";
+
+A reference guide for terminology used by Stringtale, categorized and sorted by alphabet.
+
+## General terms
+
+### Dashboard
+
+[Stringtale's Dashboard](https://stringtale.com/app) is the main web UI where you can manage Workspaces, Projects, Users and API-keys.
+
+### Project
+
+Typically a single product / repository or mono-repo for a single client. This is not required though as long as unique names are used for the Value tags.
+
+### Workspace
+
+A Workspace is a collection of Projects. It allows you to share the same user access rights across multiple projects. We recommend using Workspaces to group Projects of a single client.
+
+## Tools
+
+### Browser Extension
+
+The Stringtale browser extension simplifies the usage of Stringtale. It allows users to open the Stringtale interface on every project that makes use of it's integration and allows them to make changes.
+
+### CLI
+
+The Stringtale CLI is a utility to retrieve changes that are stored in Stringtale and apply them to your project. This can be used locally for a hands-on approach, but also gets used by the GitHub CI action to automatically create pull requests.
+
+### GitHub Action
+
+The GitHub action allows you to automatically pull copy changes into your project using [GitHub Actions](https://github.com/features/actions). It can be either triggered by conditions set in a workflow yaml file, or using webhooks.
+
+## User roles
+
+### Developer
+
+Developers have full access to the Stringtale Dashboard. This allows them to manage Workspaces, Projects and Users within your Stringtale account.
+
+### Editors
+
+Editors are users with limited access to Stringtale. They are user accounts that are scoped to one or more Workspaces, allowing them to make copy changes to projects within that Workspace.
+
+### Billing admin
+
+Billing admins are users with the most limited amount of access to Stringtale. They can manage the Subscription level of the account as well as the billing information.
+
+## Technical tersm
+
+### Value tag
+
+All text that needs to be editable with Stringtale has to be wrapped in a `<Value>` tag with a `name` property. Example `<Value name="src.index.example">Example</value>`, more information can be found in the [React front-end](/front-end/react) documentation.
