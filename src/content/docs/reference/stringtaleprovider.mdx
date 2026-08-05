@@ -1,0 +1,22 @@
+---
+title: StringtaleProvider
+description: Reference for StringtaleProvider props and optional features
+---
+
+`<StringtaleProvider>` wraps your app and enables Stringtale editing. Beyond the defaults, you can turn on optional features with props.
+
+## Example usage
+
+```tsx
+<StringtaleProvider enableHistory enableComments>
+  {children}
+</StringtaleProvider>
+```
+
+## enableHistory
+
+Lets editors view the change history of an editable field. An extra button appears in the interface so they can see what changed and when.
+
+## enableComments
+
+Lets editors leave comments on a specific `<Value>` tag—for example, to request certain text formatting. Developers connected to the Project or Workspace then receive an email with the request.

@@ -51,8 +51,9 @@ execute the following steps manually.
     ```
    _For more information on how to obtain an API key, please refer to the [obtaining an API key](/usage/obtaining-api-key) guide._
 4. Update your `App` component in `<PROJECT_DIRECTORY>/pages/_app.tsx` and wrap your app using `<StringtaleProvider>` as follows:
-      <Aside type="caution">
-        **Important:** When using the pages router, you must import the `StringtaleProvider` from `@stringtale/react` or certain features such as login will break.
+
+      <Aside type="tip">
+        To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
       </Aside>
       ```tsx
         import type { AppProps } from 'next/app'

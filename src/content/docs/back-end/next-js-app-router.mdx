@@ -52,12 +52,12 @@ execute the following steps manually.
    _For more information on how to obtain an API key, please refer to the [obtaining an API key](/usage/obtaining-api-key) guide._
 4. Add `<StringtaleProvider>` and Stringtale's CSS to your `RootLayout` in `app/layout.tsx` as such:
 
-   <Aside type="caution">
-     **Important:** In order for Server Side rendering to keep working, you must import `StringtaleProvider` from `@stringtale/next` when using the app router.
-   </Aside>
+    <Aside type="tip">
+      To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
+    </Aside>
+
    ```tsx
-    // Make sure this import is from @stringtale/next
-    import { StringtaleProvider } from "@stringtale/next"
+    import { StringtaleProvider } from "@stringtale/react"
     import "@stringtale/react/styles.css"
 
     export default async function RootLayout({
@@ -76,4 +76,4 @@ execute the following steps manually.
     ```
     For more information about RootLayout see the [NextJS documentation](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required).
 
-5. You're now ready to use Stringtale in your project. For more information on how to use Stringtale with React see our [React documentation](/front-end/react).
+5. You're now ready to use Stringtale in your project. For more information on how to use Stringtale with React see our[React documentation](/front-end/react).

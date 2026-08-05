@@ -73,8 +73,11 @@ and existing project. To use the CLI, follow the steps below.
           2. Create `app/api/stringtale.ts` to enable `/api/stringtale`.
           3. Add the required dependencies for your project.
           5. Instruct you to add `<StringtaleProvider>` and Stringtale's CSS to your `RootLayout` in `app/layout.tsx` as such:
+              <Aside type="tip">
+                To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
+              </Aside>
               ```tsx
-              import { StringtaleProvider } from "@stringtale/next"
+              import { StringtaleProvider } from "@stringtale/react"
               import "@stringtale/react/styles.css"
  
               export default async function RootLayout({
@@ -98,9 +101,12 @@ and existing project. To use the CLI, follow the steps below.
           2. Create `<PROJECT_DIRECTORY>/pages/api/stringtale.ts` to enable `/api/stringtale`.
           3. Add the required dependencies for your project.
           5. It will instruct you to customize your App component in `_app.tsx` and add the `<StringtaleProvider>`
+              <Aside type="tip">
+                To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
+              </Aside>
               ```tsx
               import type { AppProps } from 'next/app'
-              import { StringTaleProvider } from "@stringtale/next"
+              import { StringTaleProvider } from "@stringtale/react"
               import "@stringtale/react/styles.css"
  
               export default function MyApp({ Component, pageProps }: AppProps) {
@@ -126,6 +132,9 @@ and existing project. To use the CLI, follow the steps below.
               }))
               ```
           3. Instruct you to add the `<StringtaleProvider>` with `apiRoute` attribute to App component in `app.js` / `app.tsx`. Example:
+              <Aside type="tip">
+                To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
+              </Aside>
               ```tsx
               import { StringtaleProvider } from "@stringtale/react"
               import "@stringtale/react/styles.css"
