@@ -1,6 +1,6 @@
 ---
 title: Browser extension
-description: A guide on how to and use the Chrome Extension.
+description: A guide on how to install and use the Chrome extension.
 ---
 
 import { Image } from "astro:assets";
@@ -11,21 +11,21 @@ import editableFields from "../../../assets/images/browser-extension/editable-fi
 import changedText from "../../../assets/images/browser-extension/changed-text.png";
 import loginScreen from "../../../assets/images/browser-extension/login.png";
 
-The browser extension allows you enable Stringtale with the push of a button. It avoids the paging having to reload, allowing you to make changes
-to the copy of your modals (which would otherwise disappear once the page reloads). It's also the user-friendly alternative to appending `?stringtale` to the URL
+The browser extension allows you to enable Stringtale with the push of a button. It avoids the page having to reload, allowing you to make changes
+to the copy of your modals (which would otherwise disappear once the page reloads). It's also the user-friendly alternative to appending `?stringtale` to the URL.
 
 ## Install and use the browser extension
 
-1. Install the browser extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/stringtale/anedbcpkcfibdmcbddfnfjhlgnlehpke?hl=nl).
+1. Install the browser extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/stringtale/anedbcpkcfibdmcbddfnfjhlgnlehpke).
 2. Navigate to your project's test / preview environment. We'll use the [Stringtale website](https://stringtale.com/demo) for this guide.
    <Image src={original} alt="Original website" />
 3. Click the Stringtale button in the toolbar of your browser.
    <Image src={browserIcon} alt="Stringtale browser icon" width="199px" />
 4. Stringtale will become active on the page.
    <Image src={stringtaleMenu} alt="Save changes button" width="341px" />
-5. Along with the menu, you'll notice something has changed with the text on the page. They've now become editable textfields that allow you to alter the text of the page.
+5. Along with the menu, you'll notice something has changed with the text on the page. They've now become editable text fields that allow you to alter the text of the page.
    <Image src={editableFields} alt="Editable fields" />
-6. During your editing session, you can enable/siable "Edit Text". This allows you to preview your changes without the distraction of the editable textfields.
+6. During your editing session, you can enable/disable "Edit Text". This allows you to preview your changes without the distraction of the editable text fields.
    <Image src={changedText} alt="Changed text" />
 7. Once you've finished making changes, click on `Save changes` to save them to Stringtale, ready for the developer to integrate with the next update.
 
@@ -35,10 +35,10 @@ You may have noticed that in the example above you were immediately able to edit
 Stringtale offers a solution for that in the form of editor logins.
 
 1. Go to the [Stringtale Dashboard](https://stringtale.com/app).
-2. Go to [Projects](https://stringtale.com/app/projects)
+2. Go to [Projects](https://stringtale.com/app/projects).
 3. Open the project (or click on Edit project settings) you want to deploy to your test / preview environment.
-4. Click on `Add Token` and create a new token, make sure to check "Enable login"
-5. Update your test environment with the new token
+4. Scroll down to `Tokens`, click on `Add Token`, and create a new token. Make sure the **Enable login** checkbox is checked.
+5. Update your test environment with the new token as `STRINGTALE_API_KEY`.
 6. The next time somebody attempts to update text on the website, they'll be greeted with a login screen:
    <Image src={loginScreen} alt="Stringtale login" width="331px" />
-7. To manage which Developers / Editors can edit text within a project, either add them to a Workspace or a Project.
+7. To manage which Editors (and Developers) can edit text within a project, add them to a Workspace or a Project.

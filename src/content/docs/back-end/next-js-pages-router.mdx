@@ -1,23 +1,20 @@
 ---
 title: Next.js - Pages router
-description: Implementation guide for using Stringtale with Next.js when using the pages router
+description: Implementation guide for using Stringtale with Next.js when using the Pages router
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components";
 import { Aside } from "@astrojs/starlight/components"
 
-
-## Pages router
-
 In order for Stringtale to work, a back-end server is required. The back-end handles the communication between your website and Stringtale. For
-Next.js we support both the App router and the (legacy) Pages router. If you use the App router, please check the [App router documentation](/back-end/next-js-app-router) instead.
+Next.js we support both the App router and the (legacy) Pages router. If you use the App router, please check the [App router documentation](/back-end/next-js-app-router/) instead.
 
 ## Manual implementation
 
-To use Stringtale in your Next.js application with the pages router you can either use [`stringtale init`](/reference/cli#init) from our CLI or
+To use Stringtale in your Next.js application with the Pages router you can either use [`stringtale init`](/reference/cli/#init) from our CLI or
 execute the following steps manually.
 
-1. Install the `@stringtale/next` and `@stringtale/react` package in your project using your package manager.
+1. Install the `@stringtale/next` and `@stringtale/react` packages in your project using your package manager.
    <Tabs>
      <TabItem label="npm">
        ```bash
@@ -36,32 +33,30 @@ execute the following steps manually.
        ```
       </TabItem>
    </Tabs>
-2. Create a new file `<PROJECT_DIRECTORY>/pages/api/stringtale.ts` and add the following content:
+2. Create a new file `pages/api/stringtale.ts` (or `src/pages/api/stringtale.ts`) and add the following content:
 
-    ```tsx
-      import { setupRoute } from '@stringtale/next/server'
+    ```ts
+      import { setupRoute } from "@stringtale/next"
 
       export default setupRoute({
         apiKey: process.env.STRINGTALE_API_KEY!,
       })
     ```
-3. Add `STRINGTALE_API_KEY` to your `.env.local` file. This token can be obtained from the [Stringtale Dashboard](https://stringtale.com/app).
+3. Add `STRINGTALE_API_KEY` to your `.env.local` file. This API key can be obtained from the [Stringtale Dashboard](https://stringtale.com/app).
     ```
       STRINGTALE_API_KEY=YOUR_API_KEY
     ```
-   _For more information on how to obtain an API key, please refer to the [obtaining an API key](/usage/obtaining-api-key) guide._
-4. Update your `App` component in `<PROJECT_DIRECTORY>/pages/_app.tsx` and wrap your app using `<StringtaleProvider>` as follows:
+   _For more information on how to obtain an API key, please refer to the [obtaining an API key](/usage/obtaining-api-key/) guide._
+4. Update your `App` component in `pages/_app.tsx` and wrap your app using `<StringtaleProvider>` as follows:
 
       <Aside type="tip">
-        To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
+        To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider/) documentation.
       </Aside>
       ```tsx
         import type { AppProps } from 'next/app'
-        // When using pages router, make sure to import
-        // from @stringtale/react, not @stringtale/next
         import { StringtaleProvider } from "@stringtale/react"
         import "@stringtale/react/styles.css"
- 
+
         export default function MyApp({ Component, pageProps }: AppProps) {
           return (
             <StringtaleProvider>
@@ -70,6 +65,6 @@ execute the following steps manually.
           )
         }
       ```
-      For more information about customizing the `App` component see the [NextJS documentation](https://nextjs.org/docs/pages/building-your-application/routing/custom-app).
-      
-5. You're now ready to use Stringtale in your project. For more information on how to use Stringtale with React see our [React documentation](/front-end/react).
+      For more information about customizing the `App` component see the [Next.js documentation](https://nextjs.org/docs/pages/building-your-application/routing/custom-app).
+
+5. You're now ready to use Stringtale in your project. For more information on how to use Stringtale with React see our [React documentation](/front-end/react/).

@@ -1,49 +1,31 @@
 ---
 title: Workflow
-description: A guide to help you get started with Stringtale
+description: How developers and clients use Stringtale day to day
 ---
 
 import { Aside } from "@astrojs/starlight/components";
-import { Image } from 'astro:assets';
-import step24 from '../../../assets/images/workflow/step-2-4.png'
-import step25 from '../../../assets/images/workflow/step-2-5.png' 
 
-
-Getting started with new technology can be challenging. The following workflow has proven helpful for people
-to incorporate Stringtale into their workflow.
+The following workflow has proven helpful for incorporating Stringtale into your process after you've completed
+[Installation](/guides/getting-started/).
 
 ## For developers
 
 ### Initial setup and usage
 
-To get started, you have to integrate Stringtale into your code base and deploy it to your test / preview environment.
-
-1. Use `stringtale init` to integrate Stringtale into a new or existing project. For the full guide on how to use this command, please refer to the [getting started](/guides/getting-started).
-2. Create an `API key` in the [Stringtale Dashboard](https://stringtale.com/app).
-   1. Go to [Projects](https://stringtale.com/app/projects)
-   2. Open the project (or click on Edit project settings) you want to deploy to your test / preview environment.
-   3. Scroll down to `Tokens`
-   4. Click on `Add Token` and create a new token
-      <Image src={step24} alt="Tokens section of Stringtale project" />
-   5. Save the token somewhere safe, you'll need it later.
-      <Image src={step25} alt="Example of a token"  />
-   6. Enable 'Write' permissions for the newly created token by checking the checkbox for 'Can write'.
-3. Deploy your project to your test/preview environment. Add the token you just saved as the environment variable `STRINGTALE_API_KEY`.
-4. Stringtale will now be available in your test / preview environment.
-5. Let your client make the changes they require.
-6. Either use `stringtale pull` to pull their changes to your source code or let our [GitHub action](/usage/github-action) create a pull request
-   on your next commit.
-7. Review the changes and accept them to your code base, ready for release with the next update.
+1. Integrate Stringtale and deploy it to your test / preview environment. Follow the [Installation](/guides/getting-started/) guide if you haven't already.
+2. Let your client make the changes they require (see [For your clients](#for-your-clients)).
+3. Either use `stringtale pull` to pull their changes into your source code, or let our [GitHub Action](/usage/github-action/) create a pull request when new edits are available.
+4. Review the changes and merge them into your codebase, ready for release with the next update.
 
 ### Adding new static text to your project
 
-At some during the development of your project you'll have to add new static text to your project. The easiest way to achieve this is by using
-the [ESlint plugin](/usage/eslint-plugin) or using the [VS Code extension](/usage/vs-code-extension).
+At some point during the development of your project you'll have to add new static text. The easiest way to achieve this is by using
+the [ESLint plugin](/usage/eslint-plugin/) or the [VS Code extension](/usage/vs-code-extension/).
 
 1. Create your component with the static text.
 2. Select the text you've just added.
 3. Use the plugin / extension for your editor to wrap the text in a `<Value>` tag with an automatically generated `name` attribute.
-4. The `name` attribute will gets used to store updates in the Stringtale's database and retrieve those once the text has changed.
+4. The `name` attribute is used to store updates in Stringtale's database and retrieve them once the text has changed.
     <Aside type="caution" title="Changing the name attribute">
       You can alter a `<Value>`'s `name` attribute if preferred.
       We recommend you only change it on initial implementation to
@@ -51,17 +33,17 @@ the [ESlint plugin](/usage/eslint-plugin) or using the [VS Code extension](/usag
     </Aside>
 
 ### Pulling in changes that have been made externally
+
 1. Use `stringtale pull` to pull in the latest changes from Stringtale.
-2. You'll notice that any updated `<Value>` tags will now have a `version` attribute. This is what the CLI uses to deterine if the text
-has to be updated or not. You should not update the `version` attribute manually.
-3. Once you've reviewd the changes, you can commit them to repository, ready for the next update.
+2. You'll notice that any updated `<Value>` tags will now have a `version` attribute. This is what the CLI uses to determine if the text
+   has to be updated or not. You should not update the `version` attribute manually.
+3. Once you've reviewed the changes, you can commit them to the repository, ready for the next update.
 
-### Manually updatting text in your code base
-When using Stringtale, you're not limited to text changes through the browser. It's still entirely possible to make changes directly in your code base.
-In order to change the text inside your code base, you only have to change the text in your code base and commit it to your repository. There's no need
-to manually add or update the `version` attribute. The version attribute is only used to determine if changes from outside the repository have been made
-and need to be pulled in. 
+### Manually updating text in your codebase
 
+When using Stringtale, you're not limited to text changes through the browser. It's still entirely possible to make changes directly in your codebase.
+Change the text in your source and commit it to your repository. There's no need to manually add or update the `version` attribute. The version
+attribute is only used to determine if changes from outside the repository have been made and need to be pulled in.
 
 ## For your clients
 
@@ -70,12 +52,14 @@ For clients we've streamlined the experience by developing a browser extension. 
 
 ### Editing static text
 
-1. Install the browser extension from the [Chrome Web Store](https://chrome.google.com/webstore). For more information see our [browser extension guide](/usage/browser-extension).
+1. Install the browser extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/stringtale/anedbcpkcfibdmcbddfnfjhlgnlehpke). For more information see our [browser extension guide](/usage/browser-extension/).
 2. Navigate to the project's test / preview environment.
 3. Click on the Stringtale button in your browser's toolbar.
 4. Make changes to the text on your website.
-5. Once you've finished making changes, click on `Save changes` to save them to Strintale, ready for the developer to integrate with the next update.
+5. Once you've finished making changes, click on `Save changes` to save them to Stringtale, ready for the developer to integrate with the next update.
+
 <Aside type="tip">
-  It's highly recommended you lock down your test / preview environment through some form authentication (i.e. basic auth),
-  as there's no user authentication for text edits in Stringtale at this moment.
+  Lock down your test / preview environment (for example with basic auth). By default, anyone who can reach that
+  environment can edit text. You can also require editor logins by enabling login on your API key, for more information see the
+  [browser extension](/usage/browser-extension/#optional-enable-login) guide.
 </Aside>

@@ -6,7 +6,7 @@ description: An overview of all CLI commands
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 import { Aside } from "@astrojs/starlight/components";
 
-A reference guide for all CLI options. Note that all sub commands can be ran with the `--help` option to display more information about the command.
+A reference guide for all CLI options. Note that all subcommands can be run with the `--help` option to display more information about the command.
 
 ## Installation
 
@@ -62,9 +62,9 @@ stringtale [command] [options]
 ```
 
 <Aside type="tip">
-  If you decide to use the CLI directly without installing, just replace `stringtale [command]` with the equivalent `packageManager @stringtale/cli [command]`.  
+  If you decide to use the CLI directly without installing, replace `stringtale [command]` with
+  `npx @stringtale/cli [command]`, `yarn dlx @stringtale/cli [command]`, or `pnpm exec @stringtale/cli [command]`.
 </Aside>
-
 
 ## Commands
 
@@ -75,18 +75,19 @@ Authenticates the Stringtale CLI with the [dashboard](https://stringtale.com/app
 
 ### `init`
 
-Automatically integrates Stringtale into a new or existing project. It wil offer to select an existing project in Stringtale or create a new one.
-After selecting which framework you use it will take the required steps to integrate Stringtale within your project. For more information see our
-[getting started](/guides/getting-started) guide.
+Automatically integrates Stringtale into a new or existing project. It will offer to select an existing project in Stringtale or create a new one.
+After selecting which framework you use it will take the required steps to integrate Stringtale within your project, for example creating
+`app/api/stringtale/route.ts` with `setupNextAppRoute` for the Next.js App router, or `pages/api/stringtale.ts` with `setupRoute` for the Pages router.
+For more information see our [Installation](/guides/getting-started/) guide.
 
 ### `pull`
 
 Pull in text edits from Stringtale to your local source code. You can use this if your code isn't hosted by GitHub or you don't want to use
-the GitHub action.
+the GitHub Action.
 
 ### `codemod` (prior to v0.6.0 `wrap`)
 
-Automatically wraps all plain text in your source code in `<Value>` tags so they can be edited once Stringtale is actived.
+Automatically wraps all plain text in your source code in `<Value>` tags so they can be edited once Stringtale is activated.
 
 ### `logout`
 
@@ -94,19 +95,19 @@ Signs out Stringtale and deletes your local token from `~/.config/stringtale/tok
 
 ## Options
 
-Options can be used to modify the behaviour of the command. The list below is not exhausting, but rather a list of common options that are used with most commands.
+Options can be used to modify the behavior of the command. The list below is not exhaustive, but rather a list of common options that are used with most commands.
 
 ### `-e` option
 
-The `-e` option can be used as a boolean in conjuction with any of the other commands. When used the .env file from the current working directory will be loaded and used to authenticate.
+The `-e` option can be used as a boolean in conjunction with any of the other commands. When used the `.env` file from the current working directory will be loaded and used to authenticate.
 
 ### `--help` option
 
-The `-help` option can be used as a boolean in conjuction with any of the other commands. Doing so will print additional information for options that can be used with that command.
+The `--help` option can be used as a boolean in conjunction with any of the other commands. Doing so will print additional information for options that can be used with that command.
 
 ## Environment variables
 
 ### `STRINGTALE_API_KEY`
 
-The STRINGTALE_API_KEY is a project based API key. It can be used to pull in text edits from Stringtale to your local source code. You can use this with the CLI if your code isn't
-hosted by GitHub or you don't want to use the GitHub action.
+The `STRINGTALE_API_KEY` is a project-based API key. It can be used to pull in text edits from Stringtale to your local source code. You can use this with the CLI if your code isn't
+hosted by GitHub or you don't want to use the GitHub Action. See [Obtaining an API key](/usage/obtaining-api-key/).

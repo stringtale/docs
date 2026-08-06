@@ -13,10 +13,22 @@ description: Reference for StringtaleProvider props and optional features
 </StringtaleProvider>
 ```
 
+## apiRoute
+
+Optional. The URL of your Stringtale API route. Defaults to `/api/stringtale`.
+
+Use an absolute URL when the front-end and API live on different origins (typical for Express.js):
+
+```tsx
+<StringtaleProvider apiRoute="https://www.example.com/api/stringtale">
+  {children}
+</StringtaleProvider>
+```
+
 ## enableHistory
 
 Lets editors view the change history of an editable field. An extra button appears in the interface so they can see what changed and when.
 
 ## enableComments
 
-Lets editors leave comments on a specific `<Value>` tag—for example, to request certain text formatting. Developers connected to the Project or Workspace then receive an email with the request.
+Lets editors leave comments on a specific `<Value>` tag. This can be useful to request the developer to enable certain text formatting. Developers connected to the Project or Workspace then receive an email with the request.

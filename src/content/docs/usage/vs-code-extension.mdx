@@ -1,6 +1,6 @@
 ---
 title: Visual Studio Code extension
-description: A guide on how to install and use the Visual Studio Code Extension.
+description: A guide on how to install and use the Visual Studio Code extension
 ---
 
 import { Image } from 'astro:assets';
@@ -10,22 +10,22 @@ import step4 from '../../../assets/images/vscode-extension/step-4.png'
 import step5 from '../../../assets/images/vscode-extension/step-5.png'
 import { Aside } from "@astrojs/starlight/components"
 
-Learn how to use the Visual Studio Code Extension.
+Learn how to use the Visual Studio Code extension.
 
 ## What does it do?
 
-The Visual Studio Code Extension allows you to wrap your static text with `<Value>` tags automatically along with generating unique `name` attributes. It even
+The Visual Studio Code extension allows you to wrap your static text with `<Value>` tags automatically along with generating unique `name` attributes. It even
 supports automatically wrapping variables and placing them in the format attribute of the `<Value>` tag.
 
 ## Basic usage
 
 1. Install the Stringtale [Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=Stringtale.stringtale) from
-the Visual Studio Marketplace
-2. Select the text you want to wrap in a `<Value>` tag
+the Visual Studio Marketplace.
+2. Select the text you want to wrap in a `<Value>` tag.
 
 <Image src={step2} alt="Selected text in VS Code"  />
 
-3. Hit `Ctrl/Cmd + Shift + P` and exexcute `Stringtale: Wrap`
+3. Hit `Ctrl/Cmd + Shift + P` and execute `Stringtale: Wrap`.
 
 <Image src={step3} alt="VS Code Command Palette with Stringtale: Wrap selected"  />
 
@@ -34,16 +34,16 @@ you to rename it. We recommend you limit renaming to new tags and not existing o
 
 <Image src={step4} alt="Stringtale offering to rename the name attribute for the Value tag"  />
 
-5. Once you've accepted the name, the VS Code wrap your text in a `<Value>` tag, rendering the field editable in your browser.
+5. Once you've accepted the name, the VS Code extension will wrap your text in a `<Value>` tag, rendering the field editable in your browser.
 
 <Image src={step5} alt="Stringtale has wrapped the static text with a Value tag"  />
 
-6. That's it! The name attribute will be used to store information once the text changes, there's no need to push
+6. That's it! The name attribute will be used to store information once the text changes; there's no need to push
 it to the server.
 
 ## Advanced usage
 
-The demonstration above shows basic usage of how to wrap plain text with a `<Value>` tag. But the functionality of Stringtale isn't limted to just plain text. It
+The demonstration above shows basic usage of how to wrap plain text with a `<Value>` tag. But the functionality of Stringtale isn't limited to just plain text. It
 supports string interpolation and inline components. Below is an example of how to have the Visual Studio Code extension automatically wrap a piece of text with
 a string interpolated variable.
 
@@ -76,5 +76,5 @@ const name = "John Doe"
 ```
 
 <Aside type="note">
-  The `/* HTML */ prefix is used as a hint for your IDE to handle formatting correctly. Even though it's not strictly HTML, the job done.
+  The `{/* HTML */}` prefix is used as a hint for your IDE to handle formatting correctly. Even though it's not strictly HTML, it gets the job done.
 </Aside>

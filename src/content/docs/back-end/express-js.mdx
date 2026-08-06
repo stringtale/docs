@@ -11,10 +11,10 @@ the manual implementation of Stringtale using Express.js.
 
 ## Manual implementation
 
-To use Stringtale in your Express.JS application with the app router you can either use [`stringtale init`](/reference/cli#init) from our CLI or
+To use Stringtale in your Express.js application you can either use [`stringtale init`](/reference/cli/#init) from our CLI or
 execute the following steps manually.
 
-1. Install the `@stringtale/express` and `@stringtale/react` package in your project using your package manager.
+1. Install the `@stringtale/express` and `@stringtale/react` packages in your project using your package manager.
    <Tabs>
      <TabItem label="npm">
        ```bash
@@ -34,23 +34,27 @@ execute the following steps manually.
       </TabItem>
    </Tabs>
 
-2. Add the `/api/stringatale` route to your routes file in Express.JS. Example:
+2. Add the `/api/stringtale` route to your Express.js app. Example:
 
-    ```tsx
+    ```ts
     import express from 'express'
     import { setupRoute } from "@stringtale/express"
     const app = express()
-    
+
     app.all('/api/stringtale', setupRoute({
       apiKey: process.env.STRINGTALE_API_KEY!
     }))
     ```
-    {/* Add step about env file */}
-   _For more information on how to obtain an API key, please refer to the [obtaining an API key](/usage/obtaining-api-key) guide._
-3. Modfiy the `app.js` / `app.tsx` of your React application to provide the Stringtale Context to your application.
+3. Add `STRINGTALE_API_KEY` to your environment (for example a `.env` file). This API key can be obtained from the [Stringtale Dashboard](https://stringtale.com/app).
+    ```
+      STRINGTALE_API_KEY=YOUR_API_KEY
+    ```
+   _For more information on how to obtain an API key, please refer to the [obtaining an API key](/usage/obtaining-api-key/) guide._
+4. Modify the `app.js` / `app.tsx` of your React application to provide the Stringtale context to your application.
 
     <Aside type="tip">
-      To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
+      With Express.js, pass `apiRoute` so the front-end knows where your Stringtale API lives.
+      To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider/) documentation.
     </Aside>
     ```tsx
     import { StringtaleProvider } from "@stringtale/react"
@@ -67,3 +71,5 @@ execute the following steps manually.
     export default App
     ```
     For more information about Contexts and Context Providers see this [React blogpost](https://react.dev/learn/passing-data-deeply-with-context) and the [React documentation](https://react.dev/reference/react/createContext).
+
+5. You're now ready to use Stringtale in your project. For more information on how to use Stringtale with React see our [React documentation](/front-end/react/).

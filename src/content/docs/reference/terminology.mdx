@@ -1,22 +1,29 @@
 ---
 title: Terminology
-description: A reference for terminology used in Stringtale, sorted by alphabet.
+description: A reference for terminology used in Stringtale, sorted alphabetically
 ---
 
-import { Tabs, TabItem } from "@astrojs/starlight/components";
-import { Aside } from "@astrojs/starlight/components";
-
-A reference guide for terminology used by Stringtale, categorized and sorted by alphabet.
+A reference guide for terminology used by Stringtale, categorized and sorted alphabetically.
 
 ## General terms
 
+### API key
+
+Also shown as **Tokens** in the dashboard. An API key authenticates requests to the Stringtale API (environment variable: `STRINGTALE_API_KEY`).
+Keys can be read-only or have write permissions. See [Obtaining an API key](/usage/obtaining-api-key/).
+
 ### Dashboard
 
-[Stringtale's Dashboard](https://stringtale.com/app) is the main web UI where you can manage Workspaces, Projects, Users and API-keys.
+[Stringtale's Dashboard](https://stringtale.com/app) is the main web UI where you can manage Workspaces, Projects, Users and API keys.
+
+### Editor login
+
+Optional setting on an API key (**Enable login**). When enabled, editors must sign in before they can change text on the preview environment.
+See the [browser extension](/usage/browser-extension/#optional-enable-login) guide.
 
 ### Project
 
-Typically a single product / repository or mono-repo for a single client. This is not required though as long as unique names are used for the Value tags.
+Typically a single product / repository or monorepo for a single client. This is not required though as long as unique names are used for the Value tags.
 
 ### Workspace
 
@@ -26,15 +33,15 @@ A Workspace is a collection of Projects. It allows you to share the same user ac
 
 ### Browser Extension
 
-The [Stringtale browser](/usage/browser-extension/) extension simplifies the usage of Stringtale. It allows users to open the Stringtale interface on every project that makes use of it's integration and allows them to make changes.
+The [Stringtale browser extension](/usage/browser-extension/) simplifies the usage of Stringtale. It allows users to open the Stringtale interface on every project that makes use of its integration and allows them to make changes.
 
 ### CLI
 
-The Stringtale CLI is a utility to retrieve changes that are stored in Stringtale and apply them to your project. This can be used locally for a hands-on approach, but also gets used by the GitHub CI action to automatically create pull requests.
+The Stringtale CLI is a utility to retrieve changes that are stored in Stringtale and apply them to your project. This can be used locally for a hands-on approach, but also gets used by the GitHub Action to automatically create pull requests.
 
 ### GitHub Action
 
-The GitHub action allows you to automatically pull copy changes into your project using [GitHub Actions](https://github.com/features/actions). It can be either triggered by conditions set in a workflow yaml file, or using webhooks.
+The GitHub Action allows you to automatically pull copy changes into your project using [GitHub Actions](https://github.com/features/actions). It can be either triggered by conditions set in a workflow YAML file, or using webhooks.
 
 ## User types / User roles
 
@@ -48,8 +55,8 @@ Developers have full access to the Stringtale Dashboard except for the Billing i
 
 ### Editors
 
-Editors are users with limited access to Stringtale. Editor accounts are used when you have a project that's accessible for the public,
-They are user accounts that are scoped to one or more Workspaces, allowing them to make copy changes to projects within that Workspace.
+Editors are users with limited access to Stringtale. They are user accounts scoped to one or more Workspaces, allowing them to make copy changes to projects within that Workspace.
+Editor accounts are especially useful when a preview environment is publicly reachable and you have enabled [editor login](#editor-login).
 
 ### Owners
 
@@ -57,6 +64,6 @@ Owners have full control over the Stringtale account. They can add/remove Worksp
 
 ## Technical terms
 
-### <Value> tag
+### Value tag
 
-All text that needs to be editable with Stringtale has to be wrapped in a `<Value>` tag with a `name` property. Example `<Value name="src.index.example">Example</value>`, more information can be found in the [React front-end](/front-end/react) documentation.
+All text that needs to be editable with Stringtale has to be wrapped in a `<Value>` tag with a `name` property. Example: `<Value name="src.index.example">Example</Value>`. More information can be found in the [React front-end](/front-end/react/) documentation.

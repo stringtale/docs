@@ -6,7 +6,7 @@ description: Explanation on how to integrate Stringtale in your front-end using 
 ## React
 
 Stringtale is fully compatible with React as long as you're using a back-end server to handle the communication with Stringtale.
-Currently we support NextJS (both the App router and the legacy pages router) as well as Express.js as back-ends, with more coming
+Currently we support Next.js (both the App router and the legacy Pages router) as well as Express.js as back-ends, with more coming
 in the future.
 
 The implementation of Stringtale in React is very flexible. You're not limited to just using plain text. It also supports string
@@ -19,6 +19,9 @@ the [FormatJS documentation](https://formatjs.io/docs/core-concepts/icu-syntax/)
 
 In its most basic form Stringtale can be used anywhere you have static text that you want your clients to be able to edit.
 Here's an example of how you can use Stringtale to change the text of a button.
+
+The `name` attribute uniquely identifies each string. Dot-separated paths (for example based on file location) are a common
+convention, especially in monorepos, but any stable unique string works.
 
 ```tsx
 import { Value } from "@stringtale/react";
@@ -70,6 +73,7 @@ Your grocery list contains 3 items.
 ### Using inline components
 
 It's also possible to use inline components in your strings. This can be useful when you want to use your own React components or links inside your strings.
+Tag names in the message must match keys in the `format` object.
 
 ```tsx
 import { Value } from "@stringtale/react";
@@ -78,11 +82,11 @@ import Link from "next/link"
 <Value
   name="apps.web.src.storebanner.description"
   format={{
-    bold: (c) => <Text bold>{c}</Text>,
-    link: (c) => <Link href={Routes.StorePage()}>{c}</Link>
+    bold: (c) => <strong>{c}</strong>,
+    link: (c) => <Link href="/store">{c}</Link>
   }}
 >
-  {`For our <b>merchandise</b> check out the <link>store</link>.`}
+  {`For our <bold>merchandise</bold> check out the <link>store</link>.`}
 </Value>
 ```
 
@@ -94,10 +98,9 @@ For our **merchandise** check out the <ins>store</ins>.
 
 ---
 
-
 ### String interpolation and text formatting combined
 
-String interlopation and text formatting combined can be used to create more complex strings.
+String interpolation and text formatting combined can be used to create more complex strings.
 
 ```tsx
 import { Value } from "@stringtale/react";
@@ -106,7 +109,7 @@ const hits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 <Value
   name="apps.web.src.counter.items"
   format={{
-    bold: (c) => <Text bold>{c}</Text>,
+    bold: (c) => <strong>{c}</strong>,
     count: hits.length
   }}
 >
@@ -120,12 +123,10 @@ Result **9 items**.
 
 ---
 
-
-
 ### Using standard HTML tags
 
-To simplify the formatting of your strings, we've included an easy way to import standard HTML tags for you to use. They're usage is slightly
-different depending on wether it's a self closing tag such as `<br>` or not such as `<b></b>`.
+To simplify the formatting of your strings, we've included an easy way to import standard HTML tags for you to use. Their usage is slightly
+different depending on whether it's a self-closing tag such as `<br>` or not such as `<b></b>`.
 
 ```tsx
 import { Value, htmlEmptyTags, htmlFormatTags } from "@stringtale/react";
@@ -138,7 +139,7 @@ import { Value, htmlEmptyTags, htmlFormatTags } from "@stringtale/react";
   }}
 >
   {`This is a sentence with <b>bold</b>, <i>italic</i> and <u>underlined</u>
-  text.It also has a linebreak{br}in the middle.`}
+  text. It also has a linebreak {br} in the middle.`}
 </Value>
 ```
 
@@ -150,7 +151,6 @@ This is a sentence with **bold**, *italic* and <ins>underlined</ins> text. It al
 in the middle.
 
 ---
-
 
 ## Advanced usage
 
@@ -169,3 +169,8 @@ export default function getPage({ result }) {
 }
 ```
 
+## Next steps
+
+- Set up a back-end: [Next.js App router](/back-end/next-js-app-router/), [Next.js Pages router](/back-end/next-js-pages-router/), or [Express.js](/back-end/express-js/)
+- Activate editing with `?stringtale` or the [browser extension](/usage/browser-extension/)
+- Follow the day-to-day [workflow](/guides/workflow/)

@@ -3,13 +3,12 @@ title: Introduction
 description: What is Stringtale and why should I use it?
 ---
 
-Stringtale is our answer to the decades old struggle of updating static text on your website(s).
-Using Stringtale, the days of copy pasting text from copy docs, emails or tickets to your code are over.
-Your copy writers can live edit static text in your website, our toolchain handles integrating it
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+Stringtale is our answer to the decades-old struggle of updating static text on your website(s).
+Using Stringtale, the days of copy-pasting text from copy docs, emails or tickets to your code are over.
+Your copywriters can live-edit static text in your website, our toolchain handles integrating it
 into your source code, all whilst giving you, the developer, final control over deployment.
-
-
-import { Card, CardGrid } from '@astrojs/starlight/components';
 
 ## What is Stringtale?
 
@@ -17,17 +16,23 @@ Stringtale is a collection of libraries and tools that enable you to add live te
 website's test or preview environment, without having to develop a CMS. You integrate it with your web framework
 of choice by wrapping your static text in special tags. Once you activate Stringtale, these tags determine
 which fields are editable on each page. Once a copywriter has finished making their
-changes, you, the developer, can pull them into your source code using the CLI locally or by letting our GitHub action
+changes, you, the developer, can pull them into your source code using the CLI locally or by letting our GitHub Action
 create a pull request. This will in turn automatically update all static text for you.
 
 ## Why use Stringtale?
 
 With Stringtale you give your clients what they've always craved: an easy way to update text on their
-website, right where they see it. Even better still, you can enable them to do so without even lifting
-a finger. Stringtale has been build to be easily integrated into your source code and workflow. Once that's
-done, your client can make all the text edits they desire.
+website, right where they see it. Stringtale has been built to be easily integrated into your source code and workflow.
+Once that's done, your client can make all the text edits they desire.
 
-To make things even better, once your client has made their edits, you, the developer, maintain control over
-the implementation. You can either pull the changes into your source code locally using the CLI, or let our
-Github Action create a pull request the next time you commit. By giving you control, you avoid text-edits
-accidentally breaking the layout of your website.
+Once your client has made their edits, you maintain control over the implementation. You can pull the changes into
+your source code locally using the CLI, or let our GitHub Action create a pull request when new edits are available.
+By giving you control, you avoid text edits accidentally breaking the layout of your website.
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Installation" href="/guides/getting-started/" description="Integrate Stringtale into your project with the CLI or a manual back-end setup." />
+  <LinkCard title="Workflow" href="/guides/workflow/" description="Learn how developers and clients use Stringtale day to day." />
+  <LinkCard title="FAQ" href="/faq/" description="Answers to common questions about authentication, production, and more." />
+</CardGrid>

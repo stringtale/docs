@@ -18,7 +18,6 @@ export default defineConfig({
         './src/styles/custom.css',
         '@fontsource/changa-one/400.css',
         '@fontsource/changa/400.css',
-        
       ],
       social: {
         github: 'https://github.com/stringtale',
@@ -27,42 +26,34 @@ export default defineConfig({
         {
           label: 'Introduction',
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'What is stringtale?', link: '/' },
+            { label: 'Introduction', link: '/' },
           ],
         },
         {
           label: 'Getting started',
-          autogenerate: { directory: 'guides' },
+          items: [
+            { label: 'Installation', link: '/guides/getting-started/' },
+            { label: 'Workflow', link: '/guides/workflow/' },
+          ],
         },
         {
           label: 'Back-end frameworks',
-          // items: [
-          //   { label: 'React', link: '/frameworks/react/' },
-          //   { label: 'Next.js', link: '/frameworks/next-js/' },
-          //   { label: 'Express.js', link: '/frameworks/express-js/' },
-          // ],
           autogenerate: { directory: 'back-end' },
         },
         {
           label: 'Front-end frameworks',
-          // items: [
-          //   { label: 'React', link: '/frameworks/react/' },
-          //   { label: 'Next.js', link: '/frameworks/next-js/' },
-          //   { label: 'Express.js', link: '/frameworks/express-js/' },
-          // ],
           autogenerate: { directory: 'front-end' },
         },
         {
           label: 'Usage',
-          autogenerate: { directory: 'usage' },
-          // items: [
-          //   { label: 'Github Action', link: '/usage/github-action/' },
-          //   { label: 'VS Code Extension', link: '/usage/vs-code-extension/' },
-          //   { label: 'InteliJ / Webstorm Plugin', link: '/usage/intelij-webstorm-plugin/' },
-          //   { label: 'Vim plugin', link: '/usage/vim-plugin/' },
-          //   { label: 'Browser extension', link: '/usage/browser-extension/' },
-          // ],
+          items: [
+            { label: 'Obtaining an API key', link: '/usage/obtaining-api-key/' },
+            { label: 'Browser extension', link: '/usage/browser-extension/' },
+            { label: 'VS Code extension', link: '/usage/vs-code-extension/' },
+            { label: 'ESLint plugin', link: '/usage/eslint-plugin/' },
+            { label: 'GitHub Action', link: '/usage/github-action/' },
+            { label: 'Slack webhook', link: '/usage/slack-webhook/' },
+          ],
         },
         {
           label: 'Reference',

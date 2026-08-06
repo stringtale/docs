@@ -1,14 +1,10 @@
 ---
 title: Installation
-description: A guide to get started with Stringtale
+description: Integrate Stringtale into your project
 ---
 
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 import { Aside } from "@astrojs/starlight/components"
-
-import { Image } from 'astro:assets'
-import step24 from '../../../assets/images/workflow/step-2-4.png'
-import step25 from '../../../assets/images/workflow/step-2-5.png' 
 
 Looking to integrate Stringtale into your (existing) project? You've come to the right place! This guide will lead
 you through the required steps and get you up and running in minutes.
@@ -16,20 +12,24 @@ you through the required steps and get you up and running in minutes.
 ## Before getting started
 
 ### Introduction of components
-Understanding the different components of Stringtale up front will aid your integration. Here's a run down of the
+
+Understanding the different components of Stringtale up front will aid your integration. Here's a rundown of the
 components.
 
 - JavaScript libraries (for integration with the front- and back-end of your project)
 - Command Line Utility (CLI) (for easier integration and local usage)
 - Dashboard (for creating and managing projects, users as well as billing)
-- Utilities such as a GitHub action (optional), a Visual Studio Code extension and an ESlint plugin
+- Utilities such as a GitHub Action (optional), a Visual Studio Code extension and an ESLint plugin
 
 ### How does it work once integrated?
 
-Stringtale works as a client side JavaScript library that activates either by either adding `?stringtale` to the URL
-or by enabling it through the [Chrome extension](/usage/browser-extension). When edited text gets saved, it makes
+Stringtale works as a client-side JavaScript library that activates either by adding `?stringtale` to the URL
+or by enabling it through the [Chrome extension](/usage/browser-extension/). When edited text gets saved, it makes
 a call to the `/api/stringtale` route of your back-end, which then passes it on to Stringtale for storage. Your back-end
-will then in turn call the Stringtale API, authenticating using the `Deploy key`.
+authenticates with the Stringtale API using your [API key](/usage/obtaining-api-key/) (`STRINGTALE_API_KEY`).
+
+Stringtale requires a back-end server (currently Next.js or Express.js) to handle that communication. The React front-end
+library alone is not enough.
 
 ## Integrating Stringtale
 
@@ -39,8 +39,13 @@ your codebase through the `<StringtaleProvider>`. After that you can use it anyw
 ### Integrating Stringtale on your back-end
 
 The fastest way to get started is to use our CLI for semi-automatic integration. If you prefer to do things manually,
-please refer to the documentation for your back-end framework. Our automatic integration is suited for both new
-and existing project. To use the CLI, follow the steps below.
+please refer to the documentation for your back-end framework:
+
+- [Next.js App router](/back-end/next-js-app-router/)
+- [Next.js Pages router](/back-end/next-js-pages-router/)
+- [Express.js](/back-end/express-js/)
+
+Our automatic integration is suited for both new and existing projects. To use the CLI, follow the steps below.
 
 1. Install the **Stringtale CLI** globally:
    <Tabs>
@@ -60,9 +65,9 @@ and existing project. To use the CLI, follow the steps below.
        ```
       </TabItem>
    </Tabs>
-2. Login using with your Stringtale credentials `stringtale login`
+2. Log in with your Stringtale credentials: `stringtale login`
 3. Run `stringtale init`, and follow the prompts.
-   1. Select your language (Typescript or JavaScript).
+   1. Select your language (TypeScript or JavaScript).
    2. Select which Stringtale project should be assigned to this project.
    3. Select which back-end framework you use (Next.js or Express.js).
    4. The CLI will then generate a `stringtale.config.json` for your project.
@@ -70,16 +75,16 @@ and existing project. To use the CLI, follow the steps below.
       <Tabs>
         <TabItem label="Next.js (app router)">
           1. Attempt to locate your `next.config.js` to detect the root of your project or prompt you if it can't find the correct one.
-          2. Create `app/api/stringtale.ts` to enable `/api/stringtale`.
+          2. Create `app/api/stringtale/route.ts` (or under `src/app/...`) to enable `/api/stringtale`.
           3. Add the required dependencies for your project.
-          5. Instruct you to add `<StringtaleProvider>` and Stringtale's CSS to your `RootLayout` in `app/layout.tsx` as such:
+          4. Instruct you to add `<StringtaleProvider>` and Stringtale's CSS to your `RootLayout` in `app/layout.tsx` as such:
               <Aside type="tip">
-                To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
+                To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider/) documentation.
               </Aside>
               ```tsx
               import { StringtaleProvider } from "@stringtale/react"
               import "@stringtale/react/styles.css"
- 
+
               export default async function RootLayout({
                 children,
               }: {
@@ -94,21 +99,21 @@ and existing project. To use the CLI, follow the steps below.
                 )
               }
               ```
-              For more information about `RootLayout` see the [NextJS documentation](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required).
+              For more information about `RootLayout` see the [Next.js documentation](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required).
         </TabItem>
         <TabItem label="Next.js (pages router)">
           1. Attempt to locate your `next.config.js` to detect the root of your project or prompt you if it can't find the correct one.
-          2. Create `<PROJECT_DIRECTORY>/pages/api/stringtale.ts` to enable `/api/stringtale`.
+          2. Create `pages/api/stringtale.ts` (or under `src/pages/...`) to enable `/api/stringtale`.
           3. Add the required dependencies for your project.
-          5. It will instruct you to customize your App component in `_app.tsx` and add the `<StringtaleProvider>`
+          4. Instruct you to customize your App component in `_app.tsx` and add the `<StringtaleProvider>`:
               <Aside type="tip">
-                To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
+                To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider/) documentation.
               </Aside>
               ```tsx
               import type { AppProps } from 'next/app'
-              import { StringTaleProvider } from "@stringtale/react"
+              import { StringtaleProvider } from "@stringtale/react"
               import "@stringtale/react/styles.css"
- 
+
               export default function MyApp({ Component, pageProps }: AppProps) {
                 return (
                   <StringtaleProvider>
@@ -117,23 +122,23 @@ and existing project. To use the CLI, follow the steps below.
                  )
                }
               ```
-              For more information about customizing the `App` component see the [NextJS documentation](https://nextjs.org/docs/pages/building-your-application/routing/custom-app).
+              For more information about customizing the `App` component see the [Next.js documentation](https://nextjs.org/docs/pages/building-your-application/routing/custom-app).
         </TabItem>
         <TabItem label="Express.js">
           1. Add the required dependencies for your project.
           2. Instruct you to add the `/api/stringtale` route. Because of how Express handles routing, we don't add this automatically. Example:
-              ```tsx
+              ```ts
               import express from 'express'
               import { setupRoute } from "@stringtale/express"
               const app = express()
-             
+
               app.all('/api/stringtale', setupRoute({
                 apiKey: process.env.STRINGTALE_API_KEY!
               }))
               ```
           3. Instruct you to add the `<StringtaleProvider>` with `apiRoute` attribute to App component in `app.js` / `app.tsx`. Example:
               <Aside type="tip">
-                To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider) documentation.
+                To enable additional Stringtale features, check out the [StringtaleProvider](/reference/stringtaleprovider/) documentation.
               </Aside>
               ```tsx
               import { StringtaleProvider } from "@stringtale/react"
@@ -152,9 +157,9 @@ and existing project. To use the CLI, follow the steps below.
         </TabItem>
       </Tabs>
 
-  5. Once `stringtale init` has finished, it's integrated with your back-end. To start using Stringtale in your front-end,
-    check out the next section.
-  
+4. Once `stringtale init` has finished, it's integrated with your back-end. To start using Stringtale in your front-end,
+   check out the next section.
+
 ### Integrating Stringtale on your front-end
 
 In order to integrate Stringtale in your React front-end you can either start wrapping your strings manually,
@@ -162,33 +167,26 @@ or make use of our Codemod.
 
 #### Automated wrapping using Codemod
 
-You can wrap all the static text in your sourcecode using our Codemod utility. By running `stringtale codemod` our CLI will
+You can wrap all the static text in your source code using our Codemod utility. By running `stringtale codemod` our CLI will
 automatically wrap all the static text in your codebase in `<Value>` tags and generate name attributes for them.
 
 #### Manual wrapping
 
-To start using Stringtale on a subset of your strings, please refer to the documentation for the [React framework](/front-end/react).
+To start using Stringtale on a subset of your strings, please refer to the documentation for the [React framework](/front-end/react/).
 
 ## Deploying Stringtale to your test environment
 
-Deploying Stringtale to your test environment is very straight forward. Just deploy your application as usual, add `STRINGTALE_API_KEY` to your
-environment variables and you're good to go. To obtain the `STRINGTALE_API_KEY` you can follow the steps below:
-1. Go to the [Stringtale Dashboard](https://stringtale.com/app).
-2. Go to [Projects](https://stringtale.com/app/projects)
-3. Open the project (or click on Edit project settings) you want to deploy to your test / preview environment.
-4. Scroll down to `Tokens`
-5. Click on `Add Token` and create a new token
-  <Image src={step24} alt="Tokens section of Stringtale project" />
-6. Save the token somewhere safe, you'll need it later.
-  <Image src={step25} alt="Example of a token" width="564px" />
-7. Enable 'Write' permissions for the newly created token by checking the checkbox for 'Can write'.
+Deploying Stringtale to your test environment is straightforward. Deploy your application as usual, add `STRINGTALE_API_KEY` to your
+environment variables and you're good to go.
 
-Now you can deploy your application and add `STRINGTALE_API_KEY` to your environment variables. You can start using Stringtale by adding `?stringtale` to the URL or by using our [browser extension](/usage/browser-extension).
+1. Create an [API key](/usage/obtaining-api-key/) in the Stringtale Dashboard with write permissions.
+2. Deploy your application and set `STRINGTALE_API_KEY` to that key in your test / preview environment.
+3. Activate Stringtale by adding `?stringtale` to the URL or by using our [browser extension](/usage/browser-extension/).
 
-For more information on how to use Stringtale once you've deployed it, checkout the [workflow](/guides/workflow) documentation.
+For more information on how to use Stringtale once you've deployed it, check out the [workflow](/guides/workflow/) documentation.
 
 <Aside type="caution">
-   It's highly recommended you lock down your test / preview environment through some form authentication (i.e. basic auth),
-   as there's no user authentication for text edits in Stringtale at this moment. This means that without authentication,
-   anyone would be able to edit text on your website.
+  Lock down your test / preview environment (for example with basic auth). By default, anyone who can reach that
+  environment can edit text. You can also require editor logins by enabling login on your API key, for more information see the
+  [browser extension](/usage/browser-extension/#optional-enable-login) guide.
 </Aside>

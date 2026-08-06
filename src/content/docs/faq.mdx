@@ -7,27 +7,29 @@ import { Aside } from "@astrojs/starlight/components";
 
 ## When are text edits applied?
 
-Text edits get applied when you pull the changes to your local source code or merge a pull request from the GitHub action. They'll then be
-available at your test / preview environment upon your next release.
+Text edits get applied when you pull the changes to your local source code with the [CLI](/reference/cli/#pull) or merge a pull request from the [GitHub Action](/usage/github-action/).
+After that, they'll appear in your deployed environments with your next release.
 
 ## Can I use rich-text formatting with Stringtale?
 
-Yes, there are various formatting options available. Check the documentation for your framework on how to achieve this.
+Yes, there are various formatting options available. See the [React documentation](/front-end/react/) for examples.
 
 ## Can I use string interpolation with Stringtale?
 
-Yes, Stringtale is compatible with string interpolation. String interpolation uses the `Intl.Messageformat` notation.
-You can find more about how to use this in the documentation of your framework.
+Yes, Stringtale is compatible with string interpolation. Interpolation uses [ICU MessageFormat](https://formatjs.io/docs/core-concepts/icu-syntax/) (via FormatJS / `Intl.MessageFormat`).
+You can find more about how to use this in the [React documentation](/front-end/react/).
 
-## Why should I use on my test / preview environment rather than production?
+## Why should I use it on my test / preview environment rather than production?
 
-The Stringtale integration handles authentication through an API key on the server. There is no authentication for individual users editing text
-at this moment. This means that anyone with access to the website (on your test / preview environment) can edit the text. It's therefor recommended
-that you use a secured test / preview environment to avoid unauthorized usage. On production the `STRINGTALE_API_KEY` environment variable
-isn't present and the the integration will be disabled.
+The Stringtale integration authenticates with the server using an [API key](/usage/obtaining-api-key/). By default, anyone who can access your
+test / preview environment can edit text. Therefore it's recommended that you use a secured test / preview environment to avoid unauthorized usage.
+On production, omit `STRINGTALE_API_KEY` so the integration stays disabled.
+
+You can also require editor logins by enabling login on your API key, for more information see the [browser extension](/usage/browser-extension/#optional-enable-login) guide.
 
 <Aside type="tip">You can secure your test / preview environment using basic auth.</Aside>
 
 ## Is Stringtale open source?
 
-Stringtale is partially open source. The framework integrations, the CLI and the GitHub action are open source. The back-end server however is properietary.
+Stringtale is partially open source. The framework integrations, the CLI and the GitHub Action are open source
+(see [github.com/stringtale](https://github.com/stringtale)). The back-end server however is proprietary.
