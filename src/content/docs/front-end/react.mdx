@@ -9,15 +9,13 @@ Stringtale is fully compatible with React as long as you're using a back-end ser
 Currently we support NextJS (both the App router and the legacy pages router) as well as Express.js as back-ends, with more coming
 in the future.
 
-## Implementation
-
 The implementation of Stringtale in React is very flexible. You're not limited to just using plain text. It also supports string
 interpolation, formatting as well as custom components.
 
 For all usages Stringtale uses FormatJS under the hood. So if you're unsure about how to use it, please check out
 the [FormatJS documentation](https://formatjs.io/docs/core-concepts/icu-syntax/).
 
-### Basic usage
+## Basic usage
 
 In its most basic form Stringtale can be used anywhere you have static text that you want your clients to be able to edit.
 Here's an example of how you can use Stringtale to change the text of a button.
@@ -152,3 +150,22 @@ This is a sentence with **bold**, *italic* and <ins>underlined</ins> text. It al
 in the middle.
 
 ---
+
+
+## Advanced usage
+
+### Editable text outside JSX
+
+Most editable copy lives in JSX via `<Value>`. Sometimes you send text to the client as data instead. An example of this would be an error or success message from a server. You can still make that copy editable by wrapping it with `toValueObject`. Editors can then change it in Stringtale the same way they would a normal `<Value>` tag.
+
+```tsx
+import { toValueObject } from "@stringtale/react"
+// Alternatively: import { toValueObject } from "@stringtale/node"
+
+export default function getPage({ result }) {
+  return result.status === "ERROR"
+      ? toValueObject({ name: "example.error", value: /* HTML */ `Something went wrong. Please try again later.` })
+      : toValueObject({ name: "example.success", value: /* HTML */ `Your changes were saved successfully.` })
+}
+```
+
