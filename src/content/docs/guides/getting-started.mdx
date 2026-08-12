@@ -6,8 +6,7 @@ description: Integrate Stringtale into your project
 import { Tabs, TabItem } from "@astrojs/starlight/components"
 import { Aside } from "@astrojs/starlight/components"
 
-Looking to integrate Stringtale into your (existing) project? You've come to the right place! This guide will lead
-you through the required steps and get you up and running in minutes.
+Looking to integrate Stringtale into an existing or new project? This guide walks you through the required steps for the back-end and front-end integration.
 
 ## Before getting started
 
@@ -186,7 +185,8 @@ environment variables and you're good to go.
 For more information on how to use Stringtale once you've deployed it, check out the [workflow](/guides/workflow/) documentation.
 
 <Aside type="caution">
-  Lock down your test / preview environment (for example with basic auth). By default, anyone who can reach that
-  environment can edit text. You can also require editor logins by enabling login on your API key, for more information see the
+  Lock down your test / preview environment (for example with basic auth). When using a write-enabled API key without
+  editor login, anyone who can reach the environment and activate Stringtale can edit Stringtale-enabled text. You can also
+  require editor logins by enabling login on your API key. For more information, see the
   [browser extension](/usage/browser-extension/#optional-enable-login) guide.
 </Aside>

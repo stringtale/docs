@@ -10,6 +10,26 @@ import { Aside } from "@astrojs/starlight/components";
 Text edits get applied when you pull the changes to your local source code with the [CLI](/reference/cli/#pull) or merge a pull request from the [GitHub Action](/usage/github-action/).
 After that, they'll appear in your deployed environments with your next release.
 
+## Is Stringtale a CMS?
+
+No. Stringtale is designed for static UI text that remains in your source code. It adds an editing workflow around that text, but the copy that ships still lives in your repository and follows your normal Git and deployment process.
+
+## Do editors need access to Git or the codebase?
+
+No. Editors make changes through Stringtale's in-page editing interface and do not need Git or codebase access. Developers remain responsible for pulling or reviewing the resulting changes and deciding what gets merged and deployed.
+
+## Does my copy remain in my repository?
+
+Yes. Pending edits are stored in Stringtale until they are pulled into the source code with the CLI or applied through a pull request created by the GitHub Action. The copy that gets deployed remains part of your repository.
+
+## Which frameworks are currently supported?
+
+Stringtale currently supports React on the front end with Next.js or Express.js on the server side. See the [Installation guide](/guides/getting-started/) for the available integration paths.
+
+## Can developers still edit text directly in code?
+
+Yes. You can continue to edit Stringtale-enabled text directly in your source code and commit it as usual. You do not need to manually add or update the `version` attribute. See the [Workflow guide](/guides/workflow/#manually-updating-text-in-your-codebase) for details.
+
 ## Can I use rich-text formatting with Stringtale?
 
 Yes, there are various formatting options available. See the [React documentation](/front-end/react/) for examples.
@@ -21,11 +41,10 @@ You can find more about how to use this in the [React documentation](/front-end/
 
 ## Why should I use it on my test / preview environment rather than production?
 
-The Stringtale integration authenticates with the server using an [API key](/usage/obtaining-api-key/). By default, anyone who can access your
-test / preview environment can edit text. Therefore it's recommended that you use a secured test / preview environment to avoid unauthorized usage.
+The Stringtale integration authenticates with the server using an [API key](/usage/obtaining-api-key/). When using a write-enabled API key without editor login, anyone who can reach the environment and activate Stringtale can edit Stringtale-enabled text. Therefore it's recommended that you use a secured test / preview environment to avoid unauthorized usage.
 On production, omit `STRINGTALE_API_KEY` so the integration stays disabled.
 
-You can also require editor logins by enabling login on your API key, for more information see the [browser extension](/usage/browser-extension/#optional-enable-login) guide.
+You can also require editor logins by enabling login on your API key. For more information, see the [browser extension](/usage/browser-extension/#optional-enable-login) guide.
 
 <Aside type="tip">You can secure your test / preview environment using basic auth.</Aside>
 

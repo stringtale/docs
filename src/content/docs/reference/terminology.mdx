@@ -23,7 +23,7 @@ See the [browser extension](/usage/browser-extension/#optional-enable-login) gui
 
 ### Project
 
-Typically a single product / repository or monorepo for a single client. This is not required though as long as unique names are used for the Value tags.
+A Project represents a Stringtale integration, typically for a single product / repository or a monorepo for a single client. Other setups are possible as long as the `name` values used by `<Value>` tags remain unique within the Project.
 
 ### Workspace
 
@@ -53,12 +53,12 @@ Billing admins are users with limited access to Stringtale. They can only manage
 
 Developers have full access to the Stringtale Dashboard except for the Billing information. They can manage Workspaces, Projects and Users within your Stringtale account.
 
-### Editors
+### Editor
 
 Editors are users with limited access to Stringtale. They are user accounts scoped to one or more Workspaces, allowing them to make copy changes to projects within that Workspace.
 Editor accounts are especially useful when a preview environment is publicly reachable and you have enabled [editor login](#editor-login).
 
-### Owners
+### Owner
 
 Owners have full control over the Stringtale account. They can add/remove Workspaces, Projects and Users as well as manage the billing information and invoices.
 

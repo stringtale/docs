@@ -5,34 +5,42 @@ description: What is Stringtale and why should I use it?
 
 import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-Stringtale is our answer to the decades-old struggle of updating static text on your website(s).
-Using Stringtale, the days of copy-pasting text from copy docs, emails or tickets to your code are over.
-Your copywriters can live-edit static text in your website, our toolchain handles integrating it
-into your source code, all whilst giving you, the developer, final control over deployment.
+Stringtale lets people edit static UI text directly in a React application, without having to touch the code. Think labels, notifications, helper text, empty states and validation messages. Developers still decide what goes into the repository and what gets deployed.
+
+It is not a CMS. The copy that ships still lives in your repository. Stringtale sits around that code and handles the editing workflow.
 
 ## What is Stringtale?
 
-Stringtale is a collection of libraries and tools that enable you to add live text editing capabilities to your
-website's test or preview environment, without having to develop a CMS. You integrate it with your web framework
-of choice by wrapping your static text in special tags. Once you activate Stringtale, these tags determine
-which fields are editable on each page. Once a copywriter has finished making their
-changes, you, the developer, can pull them into your source code using the CLI locally or by letting our GitHub Action
-create a pull request. This will in turn automatically update all static text for you.
+Stringtale is a collection of libraries and tools that adds in-context editing for static UI text to a React application. Developers integrate Stringtale into a supported project, wrap the text that should be editable in `<Value>` tags and enable Stringtale in a test or preview environment. You can also use the CLI Codemod to wrap eligible static text across the codebase.
+
+Editors can then change Stringtale-enabled text directly on the page. When they save their changes, Stringtale stores them as pending edits. Developers can bring those edits back into the source code with the CLI, or use the GitHub Action to create a pull request. From there, the changes follow the normal Git review and release workflow.
+
+Stringtale currently supports React on the front end with Next.js or Express.js on the server side.
 
 ## Why use Stringtale?
 
-With Stringtale you give your clients what they've always craved: an easy way to update text on their
-website, right where they see it. Stringtale has been built to be easily integrated into your source code and workflow.
-Once that's done, your client can make all the text edits they desire.
+A lot of small UI copy lives in code, even though the person who wants to change it may never work in that codebase. Without Stringtale, a tiny wording change often ends up as a ticket, Slack message or interruption for a developer.
 
-Once your client has made their edits, you maintain control over the implementation. You can pull the changes into
-your source code locally using the CLI, or let our GitHub Action create a pull request when new edits are available.
-By giving you control, you avoid text edits accidentally breaking the layout of your website.
+With Stringtale, editors can make the change where they see it. Developers no longer have to find and retype every piece of copy, but the change still comes back through Git and can be reviewed before it ships.
+
+That removes a lot of small copy work from the development queue without adding a CMS just for interface text.
+
+## Who is Stringtale for?
+
+Stringtale has two main roles in the editing workflow: Developers and Editors.
+
+**Developers** have access to the codebase. They integrate Stringtale, decide which static text becomes editable and remain responsible for the Git, review and release workflow.
+
+**Editors** are the people who change Stringtale-enabled text through the in-page editing interface. They do not need access to the codebase or Git. An Editor can be a product owner, copywriter, designer, marketer, client or another team member responsible for interface copy.
+
+For agencies, Workspaces and Projects can be used to separate client work and scope Editor access to the relevant projects.
+
+Whichever setup you use, the division of responsibility stays the same: Editors can make static text changes themselves, while Developers retain control over what is reviewed, merged and deployed.
 
 ## Next steps
 
 <CardGrid>
   <LinkCard title="Installation" href="/guides/getting-started/" description="Integrate Stringtale into your project with the CLI or a manual back-end setup." />
-  <LinkCard title="Workflow" href="/guides/workflow/" description="Learn how developers and clients use Stringtale day to day." />
+  <LinkCard title="Workflow" href="/guides/workflow/" description="Learn how developers and editors use Stringtale day to day." />
   <LinkCard title="FAQ" href="/faq/" description="Answers to common questions about authentication, production, and more." />
 </CardGrid>

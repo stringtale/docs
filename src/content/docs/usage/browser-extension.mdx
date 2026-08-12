@@ -23,7 +23,7 @@ to the copy of your modals (which would otherwise disappear once the page reload
    <Image src={browserIcon} alt="Stringtale browser icon" width="199px" />
 4. Stringtale will become active on the page.
    <Image src={stringtaleMenu} alt="Save changes button" width="341px" />
-5. Along with the menu, you'll notice something has changed with the text on the page. They've now become editable text fields that allow you to alter the text of the page.
+5. Along with the menu, you'll notice that Stringtale-enabled text on the page is now shown as editable fields.
    <Image src={editableFields} alt="Editable fields" />
 6. During your editing session, you can enable/disable "Edit Text". This allows you to preview your changes without the distraction of the editable text fields.
    <Image src={changedText} alt="Changed text" />
@@ -31,7 +31,7 @@ to the copy of your modals (which would otherwise disappear once the page reload
 
 ## (Optional) Enable login
 
-You may have noticed that in the example above you were immediately able to edit all text on the website. This might not be desirable in your organization.
+You may have noticed that in the example above you were immediately able to edit all Stringtale-enabled text on the website. This might not be desirable in your organization.
 Stringtale offers a solution for that in the form of editor logins.
 
 1. Go to the [Stringtale Dashboard](https://stringtale.com/app).
@@ -39,6 +39,6 @@ Stringtale offers a solution for that in the form of editor logins.
 3. Open the project (or click on Edit project settings) you want to deploy to your test / preview environment.
 4. Scroll down to `Tokens`, click on `Add Token`, and create a new token. Make sure the **Enable login** checkbox is checked.
 5. Update your test environment with the new token as `STRINGTALE_API_KEY`.
-6. The next time somebody attempts to update text on the website, they'll be greeted with a login screen:
+6. The next time somebody attempts to update Stringtale-enabled text on the website, they'll be greeted with a login screen:
    <Image src={loginScreen} alt="Stringtale login" width="331px" />
 7. To manage which Editors (and Developers) can edit text within a project, add them to a Workspace or a Project.
