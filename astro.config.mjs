@@ -32,6 +32,7 @@ export default defineConfig({
         {
           label: 'Getting started',
           items: [
+            { label: 'Quickstart', link: '/guides/quickstart/' },
             { label: 'Installation', link: '/guides/getting-started/' },
             { label: 'Workflow', link: '/guides/workflow/' },
           ],

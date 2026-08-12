@@ -1,0 +1,118 @@
+---
+title: Quickstart
+description: Get one Stringtale edit from the browser back into your codebase
+---
+
+import { Aside, LinkCard, CardGrid } from "@astrojs/starlight/components"
+
+Get one Stringtale edit from the browser back into your codebase, then scale the setup across the project.
+
+You get the most out of Stringtale when it is available through an environment that editors can reach. That is why this quickstart is not only a local check: it walks through an end-to-end scenario of the same loop you will use day to day.
+
+<Aside type="note" title="End-to-end smoke test">
+  The first field in this guide is only a smoke test. It proves the full round trip—code, from implementing it, making an edit and pulling it back into the codebase, before you commit to using Stringtale for your entire project. You are not expected to add Stringtale one field at a time (although the gradual adoption is supported).
+</Aside>
+
+## Prerequisites
+
+- A React application using the [Next.js App router](/back-end/next-js-app-router/), [Next.js Pages router](/back-end/next-js-pages-router/), or [Express.js](/back-end/express-js/)
+- Access to the [Stringtale Dashboard](https://stringtale.com/app)
+
+## 1. Create or select a Stringtale project
+
+Open the [Stringtale Dashboard](https://stringtale.com/app) and create a project for the application you want to connect. You can also create or select the project later when you run `stringtale init`.
+
+Create an [API key](/usage/obtaining-api-key/) for the server integration and store it securely. For this first editing flow, enable **Can write** so the key can store edits in Stringtale. In your application environment it is passed as `STRINGTALE_API_KEY`.
+
+## 2. Run the setup
+
+From the application directory, install and run the CLI, or invoke it with your package manager:
+
+```bash
+npx @stringtale/cli login
+npx @stringtale/cli init
+```
+
+Follow the prompts to connect the codebase to the Stringtale project and select the back-end framework.
+
+If you prefer to configure the integration manually, use the [Installation](/guides/getting-started/) guide and the framework-specific guide for your stack instead.
+
+## 3. Make one piece of UI copy editable
+
+Pick one small piece of static UI copy and wrap it in `Value`:
+
+```tsx
+import { Value } from "@stringtale/react";
+
+<button>
+  <Value name="apps.web.src.index.header.try_now">
+    Try now
+  </Value>
+</button>
+```
+
+Start with one field to verify the workflow before making a larger automated change. Once the round trip works, use the CLI Codemod to expand Stringtale across eligible static UI text in the codebase.
+
+## 4. Choose where you want to make Stringtale available
+
+You can either deploy to a shared preview environment or run the app locally. Prefer a shared preview when you want to mirror how editors will use Stringtale and validate the full editing loop in a realistic setup. Choose local when you mainly want to confirm the integration works and a deploy would slow you down.
+
+### Option 1: Deploy to a shared preview environment (recommended)
+
+Deploy the application to a preview or staging environment that editors could also reach, with `STRINGTALE_API_KEY` set there.
+
+<Aside type="caution">
+  Lock down your test / preview environment (for example with basic auth). When using a write-enabled API key without
+  editor login, anyone who can reach the environment and activate Stringtale can edit Stringtale-enabled text. You can also
+  require editor logins by enabling login on your API key. For more information, see the
+  [browser extension](/usage/browser-extension/#optional-enable-login) guide.
+</Aside>
+
+### Option 2: Run it locally
+
+Run the application on your machine with `STRINGTALE_API_KEY` in your local environment.
+
+## 5. Edit the text in the browser
+
+1. Open your browser.
+2. Install the [browser extension](/usage/browser-extension/) from the [Chrome Web Store](https://chromewebstore.google.com/detail/stringtale/anedbcpkcfibdmcbddfnfjhlgnlehpke).
+3. Navigate to the environment you chose in step 4 (your shared preview URL, or the local app URL).
+4. Click the Stringtale button in your browser toolbar to enable editing. As an alternative, you can append `?stringtale` to the URL.
+5. The wrapped field becomes editable in place. Change the text and select `Save changes`.
+
+The edit is now saved in Stringtale, but it is not live in your codebase yet.
+
+## 6. Bring the edit back to Git
+
+For now, pull the edit into your local source with:
+
+```bash
+npx @stringtale/cli pull
+```
+
+Later, you can automate the same handoff with the [GitHub Action](/usage/github-action/), which applies pending edits and opens a pull request, allowing you to review it as you normally would.
+
+## 7. Validate and commit
+
+Validate the changes you just pulled in, then commit them.
+
+In day-to-day use this handoff is usually a pull request that you review and merge on GitHub—especially when the [GitHub Action](/usage/github-action/) opens one for you. For this first pass, committing locally is enough.
+
+## 8. Scale across the project
+
+The one-field setup above is only there to prove the integration. Once it works, run the Codemod to wrap eligible static UI text across the codebase in one pass instead of repeating the setup manually for each field:
+
+```bash
+npx @stringtale/cli codemod
+```
+
+Review the resulting diff before committing it. The Codemod can remove most of the repetitive wrapping work, while you still decide which text should become editable and can adjust generated field names where needed.
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Installation" href="/guides/getting-started/" description="Complete setup options with the CLI or a manual back-end integration." />
+  <LinkCard title="Workflow" href="/guides/workflow/" description="The full save-to-Git flow for developers and editors." />
+  <LinkCard title="Browser extension" href="/usage/browser-extension/" description="Editor access, in-page editing, and optional login." />
+  <LinkCard title="GitHub Action" href="/usage/github-action/" description="Automate pulling pending edits into a pull request." />
+</CardGrid>

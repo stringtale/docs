@@ -7,7 +7,7 @@ import { Image } from 'astro:assets'
 import step5 from '../../../assets/images/obtaining-token/step-5.png'
 import step6 from '../../../assets/images/obtaining-token/step-6.png'
 
-In this guide we'll go through the steps to obtain a Stringtale API key. In the dashboard these appear under **Tokens**.
+In this guide we'll go through the steps to obtain a Stringtale API key. In the dashboard these appear under **API keys**.
 An API key authenticates your requests to the Stringtale API.
 
 An API key can be either read-only or have read and write permissions. Read-only keys are used to pull in changes from Stringtale, for example using the CLI
@@ -19,10 +19,10 @@ deployed to a test / preview environment.
 1. Go to the [Stringtale Dashboard](https://stringtale.com/app).
 2. Go to [Projects](https://stringtale.com/app/projects).
 3. Open the project (or click on Edit project settings) you want to deploy to your test / preview environment.
-4. Scroll down to `Tokens`.
-5. Click on `Add Token` and create a new token.
-   <Image src={step5} alt="Tokens section of Stringtale project" />
-6. Copy the token and store it somewhere safe. You'll set it as `STRINGTALE_API_KEY` in your environment (or as a secret for the CLI / GitHub Action).
-   <Image src={step6} alt="Example of a token" />
-7. If required, enable the **Can write** permission for the newly created token by checking the checkbox. This allows the key to be used to edit text.
+4. Scroll down to `API keys`.
+5. Click on `Add API Key` and create a new API key.
+   <Image src={step5} alt="API keys section of Stringtale project" />
+6. Copy the API key and store it somewhere safe. You'll set it as `STRINGTALE_API_KEY` in your environment (or as a secret for the CLI / GitHub Action).
+   <Image src={step6} alt="Example of an API key" />
+7. If required, enable the **Can write** permission for the newly created API key by checking the checkbox. This allows the key to be used to edit text.
 8. Optionally check **Enable login** if you want editors to sign in before they can edit see the [browser extension](/usage/browser-extension/#optional-enable-login) guide.
