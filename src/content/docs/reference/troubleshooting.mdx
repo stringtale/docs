@@ -1,0 +1,90 @@
+---
+title: Troubleshooting
+description: Diagnose where the Stringtale edit-to-Git flow stops
+---
+
+Start with the point where the Stringtale flow stops. Most setup problems fall into one of four parts: browser editing, the server route, pending edits, or the Git handoff.
+
+You can confirm pending edits in the [browser extension](/usage/browser-extension/) after you save. Use that check whenever you need to know whether Stringtale stored a change before you look at the CLI, Git, or the GitHub Action.
+
+## Text doesn't become editable when activating Stringtale
+
+Check that:
+
+- The text is wrapped in a `<Value>` component.
+- `<StringtaleProvider>` is present in the application. Check your back-end framework documentation for how to set this up: [Next.js App router](/back-end/next-js-app-router/), [Next.js Pages router](/back-end/next-js-pages-router/), or [Express.js](/back-end/express-js/).
+- Stringtale is enabled through the [browser extension](/usage/browser-extension/) or by adding `?stringtale` to the URL.
+- You are using an environment where the Stringtale integration is configured (typically with `STRINGTALE_API_KEY` available server-side).
+
+If only some fields are missing, check whether their `<Value>` names or component placement differ from fields that do work.
+
+## Saving an edit fails
+
+A save goes through your application's Stringtale API route. Check that:
+
+- The route exists and is reachable. See the setup for [Next.js App router](/back-end/next-js-app-router/), [Next.js Pages router](/back-end/next-js-pages-router/), or [Express.js](/back-end/express-js/). For Express.js, also confirm [`apiRoute`](/reference/stringtaleprovider/#apiroute) points at the route.
+- `STRINGTALE_API_KEY` is available server-side.
+- The [API key](/usage/obtaining-api-key/) belongs to the correct Stringtale project.
+- The key used by the editing environment has **Can write** enabled.
+
+Do not put the API key in browser code to work around a server-route problem.
+
+After a successful save, open the [browser extension](/usage/browser-extension/) and confirm the edit appears as a pending change.
+
+## The edit saves, but nothing changes in Git
+
+This is expected. Saving only creates a pending edit in Stringtale. It does not update the repository by itself, and it does not mean the [GitHub Action](/usage/github-action/) is misconfigured.
+
+First confirm the edit is pending in the [browser extension](/usage/browser-extension/). Then bring it into Git with one of the supported handoffs:
+
+- Run `stringtale pull` locally.
+- Or set up and run the [GitHub Action](/usage/github-action/) so it can apply pending edits and open a pull request.
+
+If you expected the Action to do the handoff automatically, treat that as a separate setup step. See [The GitHub Action does not open a pull request](#the-github-action-does-not-open-a-pull-request).
+
+## `stringtale pull` finds no changes
+
+Check that:
+
+- You are authenticated with the CLI (`stringtale login`, or `STRINGTALE_API_KEY` via the environment / `-e`).
+- Your account or API key has access to the project through the Workspace or the Project.
+- The local codebase is connected to the intended Stringtale project.
+- The edit was actually saved and still shows as pending in the [browser extension](/usage/browser-extension/).
+- The matching `<Value>` still uses the same `name`.
+
+Changing a `<Value>` `name` can break the mapping to an existing pending edit. See the [Workflow](/guides/workflow/#adding-new-static-text-to-your-project) caution on renaming.
+
+## The GitHub Action does not open a pull request
+
+Check that:
+
+- There is at least one pending edit. Confirm this in the [browser extension](/usage/browser-extension/).
+- The workflow is installed in the intended repository.
+- `STRINGTALE_API_KEY` is available to the workflow.
+- The workflow trigger actually ran.
+- The GitHub permissions required by the Action are available.
+
+If you use the Stringtale webhook with `repository_dispatch`, also check the configured repository, token, and event trigger. See [Using the Stringtale GitHub webhooks](/usage/github-action/#using-the-stringtale-github-webhooks).
+
+## An editor cannot access editing mode
+
+For the API key used by that environment, one of these is true:
+
+- Login is disabled, so Stringtale does not require a signed-in editor.
+- Login is enabled, and the editor does not have Workspace or Project access when they sign in. See [Enable login](/usage/browser-extension/#optional-enable-login).
+
+## An edit shows up in more places than it should
+
+Stringtale uses the `name` on `<Value>` to identify the field. If the same `name` is reused on more than one `<Value>`, an edit applies everywhere that name appears. Give each field a unique `name` within the Project.
+
+## Still stuck?
+
+Reduce the setup to one known `<Value>` field and test the flow in order:
+
+1. Field is editable.
+2. Edit saves.
+3. Edit appears as pending in the [browser extension](/usage/browser-extension/).
+4. `pull` or GitHub Action applies it.
+5. Git diff contains the expected text change.
+
+That tells you which part of the integration to inspect instead of changing several things at once. For a guided first pass, see the [Quickstart](/guides/quickstart/).
